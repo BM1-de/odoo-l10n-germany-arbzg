@@ -11,7 +11,8 @@ each version.
    - `_dev/werkzeuge/test_protocol.sh -d <new database>` runs every test with coverage
      of lines and branches and writes `junit.xml`, `coverage.xml`, `coverage-html/`,
      `test.log` and `summary.md` (tag, commit, Odoo version and image, PostgreSQL
-     version, counts and coverage).
+     version, counts and coverage). Coverage is measured with coverage.py 7.16.2, the
+     same version as in the workflow `release`.
    - `pre-commit run --all-files` is clean (also the job `pre-commit` of the CI); every
      `i18n/de.po` is complete.
    - Coverage: at least 95 % of lines and at least 95 % of branches, 100 % of changed
@@ -21,7 +22,10 @@ each version.
 4. **Tag:** an annotated tag `19.0.x.y.z` on the commit, created from a clean working
    tree. The workflow `release` runs the tests once more and attaches the test protocol
    (JUnit XML and coverage) to the GitHub release. Run `test_protocol.sh` again on the
-   tagged commit: its `summary.md` must show the tag and a clean working tree.
+   tagged commit: its `summary.md` must show the tag and a clean working tree. Started
+   by hand for an existing tag (_Actions → release → Run workflow_, input `tag`), the
+   workflow creates the protocol of that tag again with the tools of `19.0` and replaces
+   the asset of the release.
 5. **Archive:** both test protocols (GitHub release asset and local run) are kept by BM1
    for five years.
 
