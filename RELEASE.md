@@ -36,10 +36,10 @@ full year, _Beta_ after that.
 
 Checks before the tag on 23.10.2026.
 
-| Item                                  | Result                                                                                                                      |
-| ------------------------------------- | --------------------------------------------------------------------------------------------------------------------------- |
-| Tests in a fresh database             | passed on the working tree of 23.10.2026: 26 tests, 0 failures, 0 errors, 0 skipped. Repeated on the tagged commit (step 4) |
-| Coverage lines / branches             | 100 % of lines and 100 % of branches                                                                                        |
-| pre-commit, translations              | `pre-commit run --all-files` clean on 23.10.2026; `i18n/de.po` complete                                                     |
-| No real data                          | only invented persons and businesses (checked on 23.10.2026)                                                                |
-| Test protocol attached to the release | by the workflow `release` on the tag (GitHub release of 19.0.1.0.0)                                                         |
+| Item                                  | Result                                                                                                                                                                                                                                                    |
+| ------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Tests in a fresh database             | passed on the working tree of 23.10.2026: 26 tests, 0 failures, 0 errors, 0 skipped. Repeated on the tagged commit (step 4)                                                                                                                               |
+| Coverage lines / branches             | 100 % of lines and 100 % of branches                                                                                                                                                                                                                      |
+| pre-commit, translations              | `pre-commit run --all-files` clean on 23.10.2026; `i18n/de.po` complete                                                                                                                                                                                   |
+| No real data                          | only invented persons and businesses (checked on 23.10.2026)                                                                                                                                                                                              |
+| Test protocol attached to the release | by the workflow `release` on the tag (GitHub release of 19.0.1.0.0); replaced on 23.10.2026 by a protocol created again on the tag (workflow `release` started by hand), because the first one counted two files written by the CI as uncommitted changes |
