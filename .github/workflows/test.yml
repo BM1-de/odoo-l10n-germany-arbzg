@@ -71,7 +71,7 @@ jobs:
         run: oca_run_tests
       # spec O-06 and 9.9: coverage of lines and branches, targets in
       # codecov.yml (project 95 %, patch 100 %)
-      - uses: codecov/codecov-action@v4
+      - uses: codecov/codecov-action@v5
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
       - name: Upload screenshots from JS tests
