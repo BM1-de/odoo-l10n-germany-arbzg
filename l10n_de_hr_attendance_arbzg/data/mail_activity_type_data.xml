@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Copyright 2026 Baumgärtner Marketing GmbH
+     License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl). -->
+<odoo noupdate="1">
+    <record id="mail_activity_type_arbzg_maximum" model="mail.activity.type">
+        <field name="name">Working Time Exceeded</field>
+        <field name="summary">More than the maximum working time of a day</field>
+        <field name="category">default</field>
+        <field name="res_model">hr.employee</field>
+        <field name="icon">fa-clock-o</field>
+        <field name="delay_count">0</field>
+    </record>
+</odoo>

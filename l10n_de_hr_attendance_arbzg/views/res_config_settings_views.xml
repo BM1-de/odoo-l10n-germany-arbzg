@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Copyright 2026 Baumgärtner Marketing GmbH
+     License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl). -->
+<odoo>
+    <record id="res_config_settings_view_form" model="ir.ui.view">
+        <field name="name">res.config.settings.form.l10n_de_hr_attendance_arbzg</field>
+        <field name="model">res.config.settings</field>
+        <field name="inherit_id" ref="hr_attendance.res_config_settings_view_form" />
+        <field name="arch" type="xml">
+            <xpath expr="//block[@name='overtime_settings']" position="after">
+                <block title="Working Time Act (Germany)" name="arbzg_settings">
+                    <setting
+                        string="Working Time Act (ArbZG)"
+                        company_dependent="1"
+                        help="Check the legal breaks and the daily maximum working time on every attendance."
+                    >
+                        <field name="arbzg_enabled" />
+                    </setting>
+                    <setting
+                        string="Breaks"
+                        company_dependent="1"
+                        invisible="not arbzg_enabled"
+                        help="Breaks per day (§ 4 ArbZG). Gaps between attendances count from the shortest break on."
+                    >
+                        <div class="mt-2">
+                            <span>more than </span>
+                            <field
+                                name="arbzg_break_hours_1"
+                                widget="float_time"
+                                class="oe_inline"
+                            />
+                            <span> hours: </span>
+                            <field name="arbzg_break_minutes_1" class="oe_inline" />
+                            <span> minutes</span>
+                        </div>
+                        <div>
+                            <span>more than </span>
+                            <field
+                                name="arbzg_break_hours_2"
+                                widget="float_time"
+                                class="oe_inline"
+                            />
+                            <span> hours: </span>
+                            <field name="arbzg_break_minutes_2" class="oe_inline" />
+                            <span> minutes</span>
+                        </div>
+                        <div>
+                            <span>shortest break: </span>
+                            <field name="arbzg_min_break_minutes" class="oe_inline" />
+                            <span> minutes</span>
+                        </div>
+                        <div class="mt-2">
+                            <field name="arbzg_break_mode" widget="radio" />
+                        </div>
+                    </setting>
+                    <setting
+                        string="Maximum Working Time"
+                        company_dependent="1"
+                        invisible="not arbzg_enabled"
+                        help="Maximum working time per day (§ 3 ArbZG). Longer days are reported, not shortened."
+                    >
+                        <div class="mt-2">
+                            <field
+                                name="arbzg_max_hours"
+                                widget="float_time"
+                                class="oe_inline"
+                            />
+                            <span> hours per day</span>
+                        </div>
+                        <div class="d-flex align-items-center gap-2">
+                            <field name="arbzg_auto_check_out" class="w-auto" />
+                            <label
+                                for="arbzg_auto_check_out"
+                                string="Check out automatically at the maximum"
+                                class="mb-0"
+                            />
+                        </div>
+                        <div>
+                            <label
+                                for="arbzg_responsible_id"
+                                string="Activity for"
+                                class="me-2"
+                            />
+                            <field
+                                name="arbzg_responsible_id"
+                                placeholder="the attendance approver of the employee"
+                                class="oe_inline"
+                            />
+                        </div>
+                    </setting>
+                </block>
+            </xpath>
+        </field>
+    </record>
+</odoo>

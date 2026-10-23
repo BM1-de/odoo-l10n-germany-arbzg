@@ -1,0 +1,369 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* l10n_de_hr_attendance_arbzg
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 19.0-20261015\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-10-23 05:58+0000\n"
+"PO-Revision-Date: 2026-10-23 05:58+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: l10n_de_hr_attendance_arbzg
+#. odoo-python
+#: code:addons/l10n_de_hr_attendance_arbzg/models/hr_attendance.py:0
+msgid ""
+"%(employee)s worked %(hours)s hours according to the attendances; at most "
+"%(maximum)s hours are allowed (§ 3 ArbZG). The attendances stay as recorded."
+msgstr ""
+
+#. module: l10n_de_hr_attendance_arbzg
+#: model_terms:ir.ui.view,arch_db:l10n_de_hr_attendance_arbzg.res_config_settings_view_form
+msgid "<span> hours per day</span>"
+msgstr ""
+
+#. module: l10n_de_hr_attendance_arbzg
+#: model_terms:ir.ui.view,arch_db:l10n_de_hr_attendance_arbzg.res_config_settings_view_form
+msgid "<span> hours: </span>"
+msgstr ""
+
+#. module: l10n_de_hr_attendance_arbzg
+#: model_terms:ir.ui.view,arch_db:l10n_de_hr_attendance_arbzg.res_config_settings_view_form
+msgid "<span> minutes</span>"
+msgstr ""
+
+#. module: l10n_de_hr_attendance_arbzg
+#: model_terms:ir.ui.view,arch_db:l10n_de_hr_attendance_arbzg.res_config_settings_view_form
+msgid "<span>more than </span>"
+msgstr ""
+
+#. module: l10n_de_hr_attendance_arbzg
+#: model_terms:ir.ui.view,arch_db:l10n_de_hr_attendance_arbzg.res_config_settings_view_form
+msgid "<span>shortest break: </span>"
+msgstr ""
+
+#. module: l10n_de_hr_attendance_arbzg
+#: model_terms:ir.ui.view,arch_db:l10n_de_hr_attendance_arbzg.res_config_settings_view_form
+msgid "Activity for"
+msgstr ""
+
+#. module: l10n_de_hr_attendance_arbzg
+#: model:ir.model,name:l10n_de_hr_attendance_arbzg.model_hr_attendance
+msgid "Attendance"
+msgstr ""
+
+#. module: l10n_de_hr_attendance_arbzg
+#: model:ir.model.fields,help:l10n_de_hr_attendance_arbzg.field_hr_attendance__arbzg_missing_break
+msgid ""
+"Break that is missing on this day according to the Working Time Act, if it "
+"was only pointed out and not inserted."
+msgstr ""
+
+#. module: l10n_de_hr_attendance_arbzg
+#: model_terms:ir.ui.view,arch_db:l10n_de_hr_attendance_arbzg.res_config_settings_view_form
+msgid "Breaks"
+msgstr ""
+
+#. module: l10n_de_hr_attendance_arbzg
+#: model_terms:ir.ui.view,arch_db:l10n_de_hr_attendance_arbzg.res_config_settings_view_form
+msgid ""
+"Breaks per day (§ 4 ArbZG). Gaps between attendances count from the shortest"
+" break on."
+msgstr ""
+
+#. module: l10n_de_hr_attendance_arbzg
+#: model:ir.model.fields,field_description:l10n_de_hr_attendance_arbzg.field_res_company__arbzg_auto_check_out
+#: model:ir.model.fields,field_description:l10n_de_hr_attendance_arbzg.field_res_config_settings__arbzg_auto_check_out
+msgid "Check Out at the Maximum"
+msgstr ""
+
+#. module: l10n_de_hr_attendance_arbzg
+#: model_terms:ir.ui.view,arch_db:l10n_de_hr_attendance_arbzg.res_config_settings_view_form
+msgid "Check out automatically at the maximum"
+msgstr ""
+
+#. module: l10n_de_hr_attendance_arbzg
+#: model:ir.model.fields,help:l10n_de_hr_attendance_arbzg.field_res_company__arbzg_auto_check_out
+#: model:ir.model.fields,help:l10n_de_hr_attendance_arbzg.field_res_config_settings__arbzg_auto_check_out
+msgid ""
+"Check out employees who forgot to check out as soon as the maximum working "
+"time of the day is reached (checked every 15 minutes)."
+msgstr ""
+
+#. module: l10n_de_hr_attendance_arbzg
+#: model:ir.model.fields,help:l10n_de_hr_attendance_arbzg.field_res_company__arbzg_enabled
+#: model:ir.model.fields,help:l10n_de_hr_attendance_arbzg.field_res_config_settings__arbzg_enabled
+msgid ""
+"Check the legal breaks (§ 4 ArbZG) and the daily maximum working time (§ 3 "
+"ArbZG) on every attendance of the employees of this company."
+msgstr ""
+
+#. module: l10n_de_hr_attendance_arbzg
+#: model_terms:ir.ui.view,arch_db:l10n_de_hr_attendance_arbzg.res_config_settings_view_form
+msgid ""
+"Check the legal breaks and the daily maximum working time on every "
+"attendance."
+msgstr ""
+
+#. module: l10n_de_hr_attendance_arbzg
+#. odoo-python
+#: code:addons/l10n_de_hr_attendance_arbzg/models/hr_attendance.py:0
+msgid ""
+"Checked out automatically: the maximum working time of the day (%(maximum)s "
+"hours) was reached. Please correct the actual time yourself."
+msgstr ""
+
+#. module: l10n_de_hr_attendance_arbzg
+#: model:ir.model,name:l10n_de_hr_attendance_arbzg.model_res_company
+msgid "Companies"
+msgstr ""
+
+#. module: l10n_de_hr_attendance_arbzg
+#: model:ir.model,name:l10n_de_hr_attendance_arbzg.model_res_config_settings
+msgid "Config Settings"
+msgstr ""
+
+#. module: l10n_de_hr_attendance_arbzg
+#: model:ir.model.fields,field_description:l10n_de_hr_attendance_arbzg.field_hr_attendance__display_name
+#: model:ir.model.fields,field_description:l10n_de_hr_attendance_arbzg.field_hr_employee__display_name
+#: model:ir.model.fields,field_description:l10n_de_hr_attendance_arbzg.field_res_company__display_name
+#: model:ir.model.fields,field_description:l10n_de_hr_attendance_arbzg.field_res_config_settings__display_name
+msgid "Display Name"
+msgstr ""
+
+#. module: l10n_de_hr_attendance_arbzg
+#: model:ir.model,name:l10n_de_hr_attendance_arbzg.model_hr_employee
+msgid "Employee"
+msgstr ""
+
+#. module: l10n_de_hr_attendance_arbzg
+#: model:ir.model.fields,field_description:l10n_de_hr_attendance_arbzg.field_hr_employee__arbzg_exempt
+msgid "Exempt from the Working Time Act"
+msgstr ""
+
+#. module: l10n_de_hr_attendance_arbzg
+#: model:ir.model.fields,field_description:l10n_de_hr_attendance_arbzg.field_res_company__arbzg_break_minutes_1
+#: model:ir.model.fields,field_description:l10n_de_hr_attendance_arbzg.field_res_config_settings__arbzg_break_minutes_1
+msgid "First Break (Minutes)"
+msgstr ""
+
+#. module: l10n_de_hr_attendance_arbzg
+#: model:ir.model.fields,field_description:l10n_de_hr_attendance_arbzg.field_res_company__arbzg_break_hours_1
+#: model:ir.model.fields,field_description:l10n_de_hr_attendance_arbzg.field_res_config_settings__arbzg_break_hours_1
+msgid "First Break After (Hours)"
+msgstr ""
+
+#. module: l10n_de_hr_attendance_arbzg
+#: model:ir.model.fields,help:l10n_de_hr_attendance_arbzg.field_hr_employee__arbzg_exempt
+msgid ""
+"For example managing directors and executives (§ 18 ArbZG). Contractors and "
+"freelancers are always exempt."
+msgstr ""
+
+#. module: l10n_de_hr_attendance_arbzg
+#: model:ir.model.fields,help:l10n_de_hr_attendance_arbzg.field_res_company__arbzg_min_break_minutes
+#: model:ir.model.fields,help:l10n_de_hr_attendance_arbzg.field_res_config_settings__arbzg_min_break_minutes
+msgid ""
+"Gaps between two attendances count as a break from this length on (breaks "
+"may be split into parts of at least 15 minutes, § 4 ArbZG)."
+msgstr ""
+
+#. module: l10n_de_hr_attendance_arbzg
+#: model:ir.model.fields,help:l10n_de_hr_attendance_arbzg.field_res_company__arbzg_responsible_id
+#: model:ir.model.fields,help:l10n_de_hr_attendance_arbzg.field_res_config_settings__arbzg_responsible_id
+msgid ""
+"Gets an activity when an employee worked more than the maximum. Empty: the "
+"attendance approver of the employee."
+msgstr ""
+
+#. module: l10n_de_hr_attendance_arbzg
+#: model:ir.model.fields,field_description:l10n_de_hr_attendance_arbzg.field_hr_attendance__id
+#: model:ir.model.fields,field_description:l10n_de_hr_attendance_arbzg.field_hr_employee__id
+#: model:ir.model.fields,field_description:l10n_de_hr_attendance_arbzg.field_res_company__id
+#: model:ir.model.fields,field_description:l10n_de_hr_attendance_arbzg.field_res_config_settings__id
+msgid "ID"
+msgstr ""
+
+#. module: l10n_de_hr_attendance_arbzg
+#: model:ir.model.fields.selection,name:l10n_de_hr_attendance_arbzg.selection__res_company__arbzg_break_mode__insert
+msgid "Insert the missing break"
+msgstr ""
+
+#. module: l10n_de_hr_attendance_arbzg
+#: model:ir.model.fields,help:l10n_de_hr_attendance_arbzg.field_res_company__arbzg_break_mode
+#: model:ir.model.fields,help:l10n_de_hr_attendance_arbzg.field_res_config_settings__arbzg_break_mode
+msgid ""
+"Insert: the missing break is put into the middle of the longest attendance "
+"of the day, which is split in two, and noted on it. Point out: the "
+"attendances stay unchanged; the missing minutes are shown on the attendance "
+"and the employee gets a message."
+msgstr ""
+
+#. module: l10n_de_hr_attendance_arbzg
+#. odoo-python
+#: code:addons/l10n_de_hr_attendance_arbzg/models/hr_attendance.py:0
+msgid ""
+"Legal break: %(minutes)s minutes inserted automatically (%(start)s–%(end)s),"
+" because no sufficient break was recorded on this day."
+msgstr ""
+
+#. module: l10n_de_hr_attendance_arbzg
+#: model:ir.model.fields,field_description:l10n_de_hr_attendance_arbzg.field_res_company__arbzg_break_minutes_2
+#: model:ir.model.fields,field_description:l10n_de_hr_attendance_arbzg.field_res_config_settings__arbzg_break_minutes_2
+msgid "Longer Break (Minutes)"
+msgstr ""
+
+#. module: l10n_de_hr_attendance_arbzg
+#: model:ir.model.fields,field_description:l10n_de_hr_attendance_arbzg.field_res_company__arbzg_break_hours_2
+#: model:ir.model.fields,field_description:l10n_de_hr_attendance_arbzg.field_res_config_settings__arbzg_break_hours_2
+msgid "Longer Break After (Hours)"
+msgstr ""
+
+#. module: l10n_de_hr_attendance_arbzg
+#: model:ir.model.fields,field_description:l10n_de_hr_attendance_arbzg.field_hr_attendance__arbzg_max_notified
+msgid "Maximum Reported"
+msgstr ""
+
+#. module: l10n_de_hr_attendance_arbzg
+#: model_terms:ir.ui.view,arch_db:l10n_de_hr_attendance_arbzg.res_config_settings_view_form
+msgid "Maximum Working Time"
+msgstr ""
+
+#. module: l10n_de_hr_attendance_arbzg
+#: model:ir.model.fields,field_description:l10n_de_hr_attendance_arbzg.field_res_company__arbzg_max_hours
+#: model:ir.model.fields,field_description:l10n_de_hr_attendance_arbzg.field_res_config_settings__arbzg_max_hours
+msgid "Maximum Working Time per Day (Hours)"
+msgstr ""
+
+#. module: l10n_de_hr_attendance_arbzg
+#: model_terms:ir.ui.view,arch_db:l10n_de_hr_attendance_arbzg.res_config_settings_view_form
+msgid ""
+"Maximum working time per day (§ 3 ArbZG). Longer days are reported, not "
+"shortened."
+msgstr ""
+
+#. module: l10n_de_hr_attendance_arbzg
+#: model:ir.model.fields,field_description:l10n_de_hr_attendance_arbzg.field_res_company__arbzg_break_mode
+#: model:ir.model.fields,field_description:l10n_de_hr_attendance_arbzg.field_res_config_settings__arbzg_break_mode
+msgid "Missing Break"
+msgstr ""
+
+#. module: l10n_de_hr_attendance_arbzg
+#: model:ir.model.fields,field_description:l10n_de_hr_attendance_arbzg.field_hr_attendance__arbzg_missing_break
+msgid "Missing Break (Minutes)"
+msgstr ""
+
+#. module: l10n_de_hr_attendance_arbzg
+#. odoo-python
+#: code:addons/l10n_de_hr_attendance_arbzg/models/hr_attendance.py:0
+msgid "More than %(maximum)s hours of work on %(day)s"
+msgstr ""
+
+#. module: l10n_de_hr_attendance_arbzg
+#: model:mail.activity.type,summary:l10n_de_hr_attendance_arbzg.mail_activity_type_arbzg_maximum
+msgid "More than the maximum working time of a day"
+msgstr ""
+
+#. module: l10n_de_hr_attendance_arbzg
+#: model:ir.model.fields,help:l10n_de_hr_attendance_arbzg.field_res_company__arbzg_max_hours
+#: model:ir.model.fields,help:l10n_de_hr_attendance_arbzg.field_res_config_settings__arbzg_max_hours
+msgid ""
+"More working time than this per day is not allowed (§ 3 ArbZG). The "
+"attendances are not shortened, as they must show the real time (§ 16 (2) "
+"ArbZG); the employee gets a message and the responsible person an activity."
+msgstr ""
+
+#. module: l10n_de_hr_attendance_arbzg
+#: model:ir.model.fields,help:l10n_de_hr_attendance_arbzg.field_res_company__arbzg_break_hours_1
+#: model:ir.model.fields,help:l10n_de_hr_attendance_arbzg.field_res_config_settings__arbzg_break_hours_1
+msgid "More working time than this per day needs the first break."
+msgstr ""
+
+#. module: l10n_de_hr_attendance_arbzg
+#: model:ir.model.fields,help:l10n_de_hr_attendance_arbzg.field_res_company__arbzg_break_hours_2
+#: model:ir.model.fields,help:l10n_de_hr_attendance_arbzg.field_res_config_settings__arbzg_break_hours_2
+msgid "More working time than this per day needs the longer break."
+msgstr ""
+
+#. module: l10n_de_hr_attendance_arbzg
+#. odoo-python
+#: code:addons/l10n_de_hr_attendance_arbzg/models/hr_attendance.py:0
+msgid ""
+"On %(day)s, a break of %(minutes)s minutes is missing according to the "
+"Working Time Act (§ 4 ArbZG). Please record your breaks by checking out and "
+"in again, or correct the attendances."
+msgstr ""
+
+#. module: l10n_de_hr_attendance_arbzg
+#. odoo-python
+#: code:addons/l10n_de_hr_attendance_arbzg/models/hr_attendance.py:0
+msgid ""
+"On %(day)s, the attendances show %(hours)s hours of work. More than "
+"%(maximum)s hours of work per day are not allowed (§ 3 ArbZG); please finish"
+" work in time. If the time is wrong, please correct the attendance."
+msgstr ""
+
+#. module: l10n_de_hr_attendance_arbzg
+#: model:ir.model.fields.selection,name:l10n_de_hr_attendance_arbzg.selection__res_company__arbzg_break_mode__notify
+msgid "Only point out the missing break"
+msgstr ""
+
+#. module: l10n_de_hr_attendance_arbzg
+#: model:ir.model.fields,field_description:l10n_de_hr_attendance_arbzg.field_res_company__arbzg_responsible_id
+#: model:ir.model.fields,field_description:l10n_de_hr_attendance_arbzg.field_res_config_settings__arbzg_responsible_id
+msgid "Responsible for Exceeded Working Time"
+msgstr ""
+
+#. module: l10n_de_hr_attendance_arbzg
+#: model:ir.model.fields,field_description:l10n_de_hr_attendance_arbzg.field_res_company__arbzg_min_break_minutes
+#: model:ir.model.fields,field_description:l10n_de_hr_attendance_arbzg.field_res_config_settings__arbzg_min_break_minutes
+msgid "Shortest Break (Minutes)"
+msgstr ""
+
+#. module: l10n_de_hr_attendance_arbzg
+#: model:ir.model.fields,help:l10n_de_hr_attendance_arbzg.field_hr_attendance__arbzg_max_notified
+msgid ""
+"Technical: exceeding the maximum working time of this day was already "
+"reported."
+msgstr ""
+
+#. module: l10n_de_hr_attendance_arbzg
+#. odoo-python
+#: code:addons/l10n_de_hr_attendance_arbzg/models/res_company.py:0
+msgid ""
+"The limits of the Working Time Act must be positive, and the longer break "
+"must come later and last at least as long as the first one."
+msgstr ""
+
+#. module: l10n_de_hr_attendance_arbzg
+#: model:ir.model.fields,field_description:l10n_de_hr_attendance_arbzg.field_res_company__arbzg_enabled
+#: model:ir.model.fields,field_description:l10n_de_hr_attendance_arbzg.field_res_config_settings__arbzg_enabled
+#: model_terms:ir.ui.view,arch_db:l10n_de_hr_attendance_arbzg.res_config_settings_view_form
+msgid "Working Time Act (ArbZG)"
+msgstr ""
+
+#. module: l10n_de_hr_attendance_arbzg
+#: model_terms:ir.ui.view,arch_db:l10n_de_hr_attendance_arbzg.res_config_settings_view_form
+msgid "Working Time Act (Germany)"
+msgstr ""
+
+#. module: l10n_de_hr_attendance_arbzg
+#: model:ir.actions.server,name:l10n_de_hr_attendance_arbzg.ir_cron_arbzg_auto_check_out_ir_actions_server
+msgid "Working Time Act: Check Out at the Maximum"
+msgstr ""
+
+#. module: l10n_de_hr_attendance_arbzg
+#: model:mail.activity.type,name:l10n_de_hr_attendance_arbzg.mail_activity_type_arbzg_maximum
+msgid "Working Time Exceeded"
+msgstr ""
+
+#. module: l10n_de_hr_attendance_arbzg
+#: model_terms:ir.ui.view,arch_db:l10n_de_hr_attendance_arbzg.res_config_settings_view_form
+msgid "the attendance approver of the employee"
+msgstr ""
