@@ -2,12 +2,68 @@
 
 # Arbeitszeitgesetz für Odoo
 <!-- /!\ Non OCA Context : Set here the badge of your runbot / runboat instance. -->
-[![Pre-commit Status](https://github.com/BM1-de/odoo-l10n-germany-arbzg/actions/workflows/pre-commit.yml/badge.svg?branch=19.0)](https://github.com/BM1-de/odoo-l10n-germany-arbzg/actions/workflows/pre-commit.yml?query=branch%3A19.0)
-[![Build Status](https://github.com/BM1-de/odoo-l10n-germany-arbzg/actions/workflows/test.yml/badge.svg?branch=19.0)](https://github.com/BM1-de/odoo-l10n-germany-arbzg/actions/workflows/test.yml?query=branch%3A19.0)
-[![codecov](https://codecov.io/gh/BM1-de/odoo-l10n-germany-arbzg/branch/19.0/graph/badge.svg)](https://codecov.io/gh/BM1-de/odoo-l10n-germany-arbzg)
+[![Pre-commit Status](https://github.com/BM1-de/odoo-l10n-germany-arbzg/actions/workflows/pre-commit.yml/badge.svg?branch=20.0)](https://github.com/BM1-de/odoo-l10n-germany-arbzg/actions/workflows/pre-commit.yml?query=branch%3A19.0)
+[![Build Status](https://github.com/BM1-de/odoo-l10n-germany-arbzg/actions/workflows/test.yml/badge.svg?branch=20.0)](https://github.com/BM1-de/odoo-l10n-germany-arbzg/actions/workflows/test.yml?query=branch%3A19.0)
+[![codecov](https://codecov.io/gh/BM1-de/odoo-l10n-germany-arbzg/branch/20.0/graph/badge.svg)](https://codecov.io/gh/BM1-de/odoo-l10n-germany-arbzg)
 <!-- /!\ Non OCA Context : Set here the badge of your translation instance. -->
 
 <!-- /!\ do not modify above this line -->
+
+Dieser Zweig ist für **Odoo 20** und enthält das Modul **Arbeitszeitkonto**. Das Modul zum
+Arbeitszeitgesetz (Pausen, Höchstarbeitszeit) ist für Odoo 19 fertig und steht im Zweig
+[19.0](https://github.com/BM1-de/odoo-l10n-germany-arbzg/tree/19.0); auf Odoo 20 ist es noch
+nicht portiert und hier deshalb als nicht installierbar markiert.
+
+## Arbeitszeitkonto (Odoo 20)
+
+Ein Arbeitszeitkonto mit Mehr- und Minusstunden für die Anwesenheiten von Odoo 20: Je Tag,
+Woche oder Monat wird die gearbeitete Zeit mit dem Soll aus dem Arbeitszeitmodell
+verglichen und die Abweichung als Plus oder Minus gebucht. Der Saldo kann ins Minus gehen.
+
+Odoo 19 führte so einen Saldo als „Überstunden“. Odoo 20 hat ihn durch Zeitregeln ersetzt,
+die Anwesenheiten teilen, für fehlende Zeit eigene Zeilen eintragen und keinen Saldo unter
+null kennen. Dieses Modul bringt das Konto zurück und **liest die Anwesenheiten nur**:
+Beginn, Ende und Dauer der Arbeitszeit bleiben so, wie sie erfasst wurden.
+
+> **Alpha, ohne Gewähr:** Das Modul ersetzt keine Rechtsberatung und keine Vereinbarung mit
+> den Beschäftigten. Ob ein Arbeitszeitkonto mit Minusstunden zulässig ist, hängt von den
+> Verträgen ab. Die Software wird ohne Gewährleistung bereitgestellt (AGPL-3.0, Abschnitte
+> 15 und 16).
+
+- **Rechnung:** Ist aus den bestätigten Anwesenheiten, Soll aus dem Arbeitszeitmodell des
+  am jeweiligen Tag gültigen Vertragsstands. Feiertage, Urlaub und Krankheit senken das
+  Soll und lassen das Konto unberührt.
+- **Toleranz:** Abweichungen innerhalb der Toleranz werden mit null gebucht, darüber die
+  ganze Abweichung.
+- **Minusstunden** nur, wenn es am Vertragsstand eingeschaltet ist. Einzelne Zeiträume
+  lassen sich mit Begründung auf null stellen, etwa wenn der Arbeitgeber keine Arbeit hatte.
+- **Tage ohne Anwesenheit** und ohne Abwesenheit werden nicht sofort als Minus gebucht. Sie
+  warten als „zu klären“, bis die Abwesenheit nachgetragen oder das Minus bestätigt ist.
+- **Freizeitausgleich:** Abwesenheitsarten mit „wird vom Arbeitszeitkonto abgebucht“ lassen
+  das Soll stehen, der Tag bucht ins Minus.
+- **Buchungen von Hand:** Vortrag, Korrektur, Auszahlung, Verfall, immer mit Grund. Gelöscht
+  wird nichts, storniert wird per Gegenbuchung.
+- **Monatsabschluss:** Abgeschlossene Monate werden nicht neu berechnet. Spätere Änderungen
+  erscheinen als Korrektur im offenen Monat.
+- **§ 2 Abs. 2 MiLoG:** je Vertragsstand einschaltbare Überwachung für Konten nach dem
+  Mindestlohngesetz, etwa bei Minijobs: Hinweis, wenn Plusstunden zwölf Monate alt werden
+  oder ein Monat mehr als die Hälfte der vereinbarten Arbeitszeit aufs Konto bringt.
+- **Nachweise als PDF:** Kontoauszug und Arbeitszeitnachweis (Beginn, Ende, Dauer je Tag)
+  je Mitarbeiter, zum Ablegen bei den Lohnunterlagen (§ 17 MiLoG, § 8 Abs. 2 Nr. 13 BVV).
+- **Umstieg von Odoo 19:** Die Überstunden aus Odoo 19 werden Zeile für Zeile übernommen,
+  der Saldo jedes Mitarbeiters bleibt derselbe.
+
+Nicht enthalten: Löhne und Zuschläge, die Verdienstgrenze bei Minijobs, Langzeitkonten
+(Wertguthaben nach § 7b SGB IV), Ampelgrenzen und automatischer Verfall. Einrichtung und
+Bedienung (englisch):
+[l10n_de_hr_attendance_time_account/README.rst](l10n_de_hr_attendance_time_account/README.rst).
+
+*English: a signed working time account (plus and minus hours) for the attendances of
+Odoo 20, computed from attendances and the working schedule, with entries by hand, month
+closing, monitoring of § 2 (2) MiLoG, account statements and records of working time as PDF,
+and the take over of the overtime of Odoo 19. Alpha, no legal advice, no warranty.*
+
+## Arbeitszeitgesetz (Odoo 19)
 
 Pausen und Höchstarbeitszeit nach dem Arbeitszeitgesetz (ArbZG) direkt in den
 Anwesenheiten von Odoo 19: Fehlt die gesetzliche Pause, wird sie eingefügt oder angezeigt,

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!-- Copyright 2026 Baumgärtner Marketing GmbH
+     License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl). -->
+<odoo>
+    <record id="time_account_import_view_form" model="ir.ui.view">
+        <field name="name">l10n_de.time.account.import.form</field>
+        <field name="model">l10n_de.time.account.import</field>
+        <field name="arch" type="xml">
+            <form>
+                <p>
+                    For databases that came from Odoo 19: takes over the overtime
+                    balance as it was, so every employee keeps their balance. The
+                    working time account is computed from the following day on.
+                </p>
+                <div
+                    class="alert alert-warning"
+                    role="alert"
+                    invisible="not date_warning"
+                >
+                    <field name="date_warning" nolabel="1" />
+                </div>
+                <group>
+                    <field name="date" />
+                    <field name="with_settings" />
+                    <field name="legacy_count" />
+                    <field name="result" invisible="not result" />
+                </group>
+                <footer>
+                    <button
+                        name="action_import"
+                        type="object"
+                        string="Take Over"
+                        class="btn-primary"
+                    />
+                    <button
+                        name="action_compare"
+                        type="object"
+                        string="Compare with the Computation"
+                    />
+                    <button special="cancel" string="Close" />
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="time_account_import_action" model="ir.actions.act_window">
+        <field name="name">Take Over from Odoo 19</field>
+        <field name="res_model">l10n_de.time.account.import</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+</odoo>

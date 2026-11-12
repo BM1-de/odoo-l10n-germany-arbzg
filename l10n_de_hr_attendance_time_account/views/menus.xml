@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!-- Copyright 2026 Baumgärtner Marketing GmbH
+     License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl). -->
+<odoo>
+    <menuitem
+        id="menu_time_account_my"
+        name="My Working Time Account"
+        parent="hr_attendance.menu_hr_attendance_root"
+        action="time_account_line_action_my"
+        sequence="5"
+        groups="hr_attendance.group_hr_attendance_own_reader"
+    />
+    <menuitem
+        id="menu_time_account"
+        name="Working Time Account"
+        parent="hr_attendance.menu_hr_attendance_root"
+        sequence="7"
+        groups="hr_attendance.group_hr_attendance_officer"
+    />
+    <menuitem
+        id="menu_time_account_accounts"
+        name="Accounts"
+        parent="menu_time_account"
+        action="hr_employee_action_time_account"
+        sequence="10"
+    />
+    <menuitem
+        id="menu_time_account_lines"
+        name="Entries"
+        parent="menu_time_account"
+        action="time_account_line_action_all"
+        sequence="20"
+    />
+    <menuitem
+        id="menu_time_account_book"
+        name="Book by Hand"
+        parent="menu_time_account"
+        action="time_account_line_action_book"
+        sequence="30"
+        groups="hr_attendance.group_hr_attendance_manager"
+    />
+    <menuitem
+        id="menu_time_account_print"
+        name="Statements and Records"
+        parent="menu_time_account"
+        action="time_account_print_action"
+        sequence="40"
+    />
+    <menuitem
+        id="menu_time_account_close"
+        name="Close Month"
+        parent="menu_time_account"
+        action="time_account_close_action"
+        sequence="50"
+        groups="hr_attendance.group_hr_attendance_manager"
+    />
+    <menuitem
+        id="menu_time_account_import"
+        name="Take Over from Odoo 19"
+        parent="hr_attendance.menu_hr_attendance_configuration"
+        action="time_account_import_action"
+        sequence="90"
+        groups="hr_attendance.group_hr_attendance_manager"
+    />
+</odoo>

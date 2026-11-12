@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!-- Copyright 2026 Baumgärtner Marketing GmbH
+     License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl). -->
+<odoo>
+    <record id="view_employee_form" model="ir.ui.view">
+        <field name="name">hr.employee.form.l10n_de_hr_attendance_time_account</field>
+        <field name="model">hr.employee</field>
+        <field
+            name="inherit_id"
+            ref="hr_attendance.view_employee_form_inherit_hr_attendance"
+        />
+        <field name="arch" type="xml">
+            <field name="attendance_based" position="after">
+                <field name="time_account_period" groups="hr.group_hr_user" />
+                <field
+                    name="time_account_start"
+                    groups="hr.group_hr_user"
+                    invisible="time_account_period == 'none' and not time_account_start"
+                />
+                <field
+                    name="time_account_tolerance_plus"
+                    widget="float_time"
+                    groups="hr.group_hr_user"
+                    invisible="time_account_period == 'none'"
+                />
+                <field
+                    name="time_account_tolerance_minus"
+                    widget="float_time"
+                    groups="hr.group_hr_user"
+                    invisible="time_account_period == 'none'"
+                />
+                <field
+                    name="time_account_negative"
+                    groups="hr.group_hr_user"
+                    invisible="time_account_period == 'none'"
+                />
+                <field
+                    name="time_account_milog"
+                    groups="hr.group_hr_user"
+                    invisible="time_account_period == 'none'"
+                />
+                <field
+                    name="time_account_warning"
+                    groups="hr.group_hr_user"
+                    invisible="not time_account_warning"
+                    class="text-warning"
+                />
+            </field>
+            <button name="action_open_versions" position="before">
+                <button
+                    name="action_open_time_account"
+                    class="oe_stat_button"
+                    icon="balance"
+                    type="object"
+                    groups="hr_attendance.group_hr_attendance_officer"
+                    invisible="time_account_period == 'none' and not time_account_start"
+                    help="Working time account"
+                >
+                    <div class="o_field_widget o_stat_info">
+                        <span class="o_stat_value">
+                            <field name="time_account_balance_display" />
+                        </span>
+                        <span class="o_stat_text">Time Account</span>
+                    </div>
+                </button>
+            </button>
+        </field>
+    </record>
+
+    <record id="hr_employee_view_list_time_account" model="ir.ui.view">
+        <field name="name">hr.employee.list.time_account</field>
+        <field name="model">hr.employee</field>
+        <field name="priority" eval="90" />
+        <field
+            name="group_ids"
+            eval="[(4, ref('hr_attendance.group_hr_attendance_officer'))]"
+        />
+        <field name="arch" type="xml">
+            <list create="0" delete="0">
+                <field name="name" />
+                <field
+                    name="company_id"
+                    groups="base.group_multi_company"
+                    optional="hide"
+                />
+                <field name="resource_calendar_id" optional="show" />
+                <field name="time_account_period" groups="hr.group_hr_user" />
+                <field
+                    name="time_account_start"
+                    groups="hr.group_hr_user"
+                    optional="show"
+                />
+                <field name="time_account_balance" widget="float_time" />
+                <field
+                    name="time_account_to_clarify"
+                    decoration-warning="time_account_to_clarify"
+                />
+                <field
+                    name="time_account_due_date"
+                    groups="hr.group_hr_user"
+                    optional="show"
+                />
+                <field
+                    name="time_account_due_hours"
+                    widget="float_time"
+                    groups="hr.group_hr_user"
+                    optional="hide"
+                />
+                <field
+                    name="time_account_warning"
+                    groups="hr.group_hr_user"
+                    optional="show"
+                />
+                <button
+                    name="action_open_time_account"
+                    type="object"
+                    string="Entries"
+                    class="btn-link"
+                />
+            </list>
+        </field>
+    </record>
+
+    <record id="hr_employee_action_time_account" model="ir.actions.act_window">
+        <field name="name">Working Time Accounts</field>
+        <field name="res_model">hr.employee</field>
+        <field name="view_mode">list,form</field>
+        <field name="view_id" ref="hr_employee_view_list_time_account" />
+        <field name="domain">[('time_account_start', '!=', False)]</field>
+    </record>
+</odoo>

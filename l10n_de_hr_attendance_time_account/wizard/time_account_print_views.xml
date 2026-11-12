@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!-- Copyright 2026 Baumgärtner Marketing GmbH
+     License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl). -->
+<odoo>
+    <record id="time_account_print_view_form" model="ir.ui.view">
+        <field name="name">l10n_de.time.account.print.form</field>
+        <field name="model">l10n_de.time.account.print</field>
+        <field name="arch" type="xml">
+            <form>
+                <group>
+                    <field name="document" widget="radio" />
+                    <field name="employee_ids" widget="many2many_tags" />
+                    <label for="date_from" string="Period" />
+                    <div class="o_row">
+                        <field name="date_from" class="oe_inline" />
+                        –
+                        <field name="date_to" class="oe_inline" />
+                    </div>
+                </group>
+                <footer>
+                    <button
+                        name="action_print"
+                        type="object"
+                        string="Print"
+                        class="btn-primary"
+                    />
+                    <button special="cancel" string="Discard" />
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="time_account_print_action" model="ir.actions.act_window">
+        <field name="name">Statements and Records</field>
+        <field name="res_model">l10n_de.time.account.print</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+
+    <record id="time_account_print_action_employee" model="ir.actions.act_window">
+        <field name="name">Working Time Account: Print</field>
+        <field name="res_model">l10n_de.time.account.print</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+        <field name="binding_model_id" ref="hr.model_hr_employee" />
+        <field name="binding_view_types">list,form</field>
+        <field
+            name="group_ids"
+            eval="[(4, ref('hr_attendance.group_hr_attendance_officer'))]"
+        />
+    </record>
+</odoo>

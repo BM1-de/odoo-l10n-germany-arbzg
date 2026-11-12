@@ -20,5 +20,6 @@
         "views/hr_attendance_views.xml",
     ],
     "images": ["static/description/banner.png"],
-    "installable": True,
+    # not migrated to 20.0 yet, see branch 19.0
+    "installable": False,
 }

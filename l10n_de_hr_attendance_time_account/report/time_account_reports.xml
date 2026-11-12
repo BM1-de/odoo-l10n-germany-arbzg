@@ -1,0 +1,274 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!-- Copyright 2026 Baumgärtner Marketing GmbH
+     License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl). -->
+<odoo>
+    <record id="action_report_statement" model="ir.actions.report">
+        <field name="name">Working Time Account Statement</field>
+        <field name="model">hr.employee</field>
+        <field name="report_type">qweb-pdf</field>
+        <field
+            name="report_name"
+        >l10n_de_hr_attendance_time_account.report_statement</field>
+        <field name="print_report_name">'Working time account'</field>
+    </record>
+
+    <record id="action_report_timesheet" model="ir.actions.report">
+        <field name="name">Record of Working Time</field>
+        <field name="model">hr.employee</field>
+        <field name="report_type">qweb-pdf</field>
+        <field
+            name="report_name"
+        >l10n_de_hr_attendance_time_account.report_timesheet</field>
+        <field name="print_report_name">'Record of working time'</field>
+    </record>
+
+    <template id="report_statement">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="doc">
+                <t t-set="o" t-value="doc['employee']" />
+                <t t-set="lang" t-value="o.lang or o.env.lang" />
+                <t t-call="web.external_layout">
+                    <div class="page">
+                        <h2>Working Time Account</h2>
+                        <div class="row mb-3">
+                            <div class="col-6">
+                                <strong>Employee:</strong>
+                                <span t-out="o.name" />
+                                <br />
+                                <strong>Period:</strong>
+                                <span
+                                t-out="date_from"
+                                t-options="{'widget': 'date'}"
+                            />
+                                –
+                                <span t-out="date_to" t-options="{'widget': 'date'}" />
+                            </div>
+                            <div class="col-6">
+                                <strong>Working schedule:</strong>
+                                <span
+                                    t-out="doc['version'].resource_calendar_id.name"
+                                />
+                                <br />
+                                <strong>Compared:</strong>
+                                <span t-field="doc['version'].time_account_period" />
+                            </div>
+                        </div>
+                        <table class="table table-sm">
+                            <thead>
+                                <tr>
+                                    <th>Date</th>
+                                    <th>Entry</th>
+                                    <th class="text-end">Expected</th>
+                                    <th class="text-end">Worked</th>
+                                    <th class="text-end">Difference</th>
+                                    <th class="text-end">Booked</th>
+                                    <th class="text-end">Balance</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td colspan="6">
+                                        <strong>Balance carried forward</strong>
+                                    </td>
+                                    <td class="text-end">
+                                        <strong
+                                            t-out="format_hours(doc['opening'], True)"
+                                        />
+                                    </td>
+                                </tr>
+                                <tr t-foreach="doc['rows']" t-as="row">
+                                    <t t-set="line" t-value="row['line']" />
+                                    <td>
+                                        <t
+                                            t-if="line.date_from and line.date_from != line.date"
+                                        >
+                                            <span
+                                            t-out="line.date_from"
+                                            t-options="{'widget': 'date'}"
+                                        />
+                                            –
+                                        </t>
+                                        <span
+                                            t-out="line.date"
+                                            t-options="{'widget': 'date'}"
+                                        />
+                                    </td>
+                                    <td>
+                                        <span t-field="line.kind" />
+                                        <t t-if="line.name">
+                                            :
+                                            <span t-out="line.name" />
+                                        </t>
+                                        <t t-if="line.neutral_reason">
+                                            <br />
+                                            <em>
+                                                Not booked:
+                                                <span t-out="line.neutral_reason" />
+                                            </em>
+                                        </t>
+                                        <t t-if="line.state == 'to_clarify'">
+                                            <br />
+                                            <em>
+                                                To clarify:
+                                                <span t-out="line.unexplained_days" />
+                                                day(s) without attendance
+                                            </em>
+                                        </t>
+                                    </td>
+                                    <td class="text-end">
+                                        <span
+                                            t-if="line.kind == 'deviation'"
+                                            t-out="format_hours(line.expected_hours)"
+                                        />
+                                    </td>
+                                    <td class="text-end">
+                                        <span
+                                            t-if="line.kind == 'deviation'"
+                                            t-out="format_hours(line.worked_hours)"
+                                        />
+                                    </td>
+                                    <td class="text-end">
+                                        <span
+                                            t-if="line.kind == 'deviation'"
+                                            t-out="format_hours(line.deviation_hours, True)"
+                                        />
+                                    </td>
+                                    <td class="text-end">
+                                        <span
+                                            t-if="line.state == 'booked'"
+                                            t-out="format_hours(line.hours, True)"
+                                        />
+                                    </td>
+                                    <td class="text-end">
+                                        <span
+                                            t-out="format_hours(row['balance'], True)"
+                                        />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="6">
+                                        <strong
+                                        >Balance at the end of the period</strong>
+                                    </td>
+                                    <td class="text-end">
+                                        <strong
+                                            t-out="format_hours(doc['closing'], True)"
+                                        />
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <p class="small text-muted">
+                            Hours and minutes. Expected hours follow the working
+                            schedule, reduced by public holidays and time off that
+                            counts as worked.
+                        </p>
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+
+    <template id="report_timesheet">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="doc">
+                <t t-set="o" t-value="doc['employee']" />
+                <t t-set="lang" t-value="o.lang or o.env.lang" />
+                <t t-call="web.external_layout">
+                    <div class="page">
+                        <h2>Record of Working Time</h2>
+                        <p>
+                            <strong>Employee:</strong>
+                            <span t-out="o.name" />
+                            <br />
+                            <strong>Period:</strong>
+                            <span t-out="date_from" t-options="{'widget': 'date'}" />
+                            –
+                            <span t-out="date_to" t-options="{'widget': 'date'}" />
+                        </p>
+                        <table class="table table-sm">
+                            <thead>
+                                <tr>
+                                    <th>Date</th>
+                                    <th>Begin</th>
+                                    <th>End</th>
+                                    <th class="text-end">Break</th>
+                                    <th class="text-end">Duration</th>
+                                    <th>Time off, public holiday</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <t t-foreach="doc['days']" t-as="day">
+                                    <tr t-if="not day['attendances']">
+                                        <td>
+                                            <span
+                                                t-out="day['date']"
+                                                t-options="{'widget': 'date', 'format': 'EEE dd.MM.yyyy'}"
+                                            />
+                                        </td>
+                                        <td />
+                                        <td />
+                                        <td />
+                                        <td />
+                                        <td>
+                                            <span t-out="day['absences']" />
+                                        </td>
+                                    </tr>
+                                    <tr
+                                        t-foreach="day['attendances']"
+                                        t-as="attendance"
+                                    >
+                                        <td>
+                                            <span
+                                                t-if="attendance_first"
+                                                t-out="day['date']"
+                                                t-options="{'widget': 'date', 'format': 'EEE dd.MM.yyyy'}"
+                                            />
+                                        </td>
+                                        <td>
+                                            <span t-out="attendance['check_in']" />
+                                        </td>
+                                        <td>
+                                            <span t-out="attendance['check_out']" />
+                                        </td>
+                                        <td class="text-end">
+                                            <span
+                                                t-if="attendance['break_hours']"
+                                                t-out="format_hours(attendance['break_hours'])"
+                                            />
+                                        </td>
+                                        <td class="text-end">
+                                            <span
+                                                t-out="format_hours(attendance['worked_hours'])"
+                                            />
+                                        </td>
+                                        <td>
+                                            <span
+                                                t-if="attendance_first"
+                                                t-out="day['absences']"
+                                            />
+                                        </td>
+                                    </tr>
+                                </t>
+                                <tr>
+                                    <td colspan="4">
+                                        <strong>Total</strong>
+                                    </td>
+                                    <td class="text-end">
+                                        <strong t-out="format_hours(doc['total'])" />
+                                    </td>
+                                    <td />
+                                </tr>
+                            </tbody>
+                        </table>
+                        <p class="small text-muted">
+                            Begin, end and duration of the daily working time as
+                            recorded in the attendances. Breaks between two lines of
+                            a day are not working time.
+                        </p>
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+</odoo>

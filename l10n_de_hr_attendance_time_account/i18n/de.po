@@ -1,0 +1,1173 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* l10n_de_hr_attendance_time_account
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 20.0-20261110\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-11-12 09:00+0000\n"
+"PO-Revision-Date: 2026-11-12 09:00+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Language: de\n"
+"Plural-Forms: \n"
+
+#. module: l10n_de_hr_attendance_time_account
+#. odoo-python
+#: code:addons/l10n_de_hr_attendance_time_account/wizard/time_account_close.py:0
+msgid ""
+"%(count)s periods are still to clarify. Enter the missing time off or "
+"confirm the minus hours first."
+msgstr "%(count)s Zeiträume sind noch zu klären. Tragen Sie erst die fehlende Abwesenheit nach oder bestätigen Sie die Minusstunden."
+
+#. module: l10n_de_hr_attendance_time_account
+#. odoo-python
+#: code:addons/l10n_de_hr_attendance_time_account/wizard/time_account_import.py:0
+msgid ""
+"%(new)s entries taken over, %(known)s were there already. %(settings)s "
+"contract versions got their account from the rules of Odoo 19. The accounts "
+"are computed from %(start)s on."
+msgstr "%(new)s Buchungen übernommen, %(known)s waren schon vorhanden. %(settings)s Vertragsversionen haben ihr Konto aus den Regeln von Odoo 19 bekommen. Die Konten werden ab %(start)s berechnet."
+
+#. module: l10n_de_hr_attendance_time_account
+#. odoo-python
+#: code:addons/l10n_de_hr_attendance_time_account/wizard/time_account_import.py:0
+msgid "%(periods)s periods compared, %(count)s differ."
+msgstr "%(periods)s Zeiträume verglichen, %(count)s weichen ab."
+
+#. module: l10n_de_hr_attendance_time_account
+#: model:ir.actions.report,print_report_name:l10n_de_hr_attendance_time_account.action_report_timesheet
+msgid "'Record of working time'"
+msgstr "'Arbeitszeitnachweis'"
+
+#. module: l10n_de_hr_attendance_time_account
+#: model:ir.actions.report,print_report_name:l10n_de_hr_attendance_time_account.action_report_statement
+msgid "'Working time account'"
+msgstr "'Arbeitszeitkonto'"
+
+#. module: l10n_de_hr_attendance_time_account
+#: model_terms:ir.ui.view,arch_db:l10n_de_hr_attendance_time_account.report_statement
+msgid ""
+"<br/>\n"
+"                                <strong>Compared:</strong>"
+msgstr "<br/>\n<strong>Verglichen:</strong>"
+
+#. module: l10n_de_hr_attendance_time_account
+#: model_terms:ir.ui.view,arch_db:l10n_de_hr_attendance_time_account.report_statement
+msgid ""
+"<br/>\n"
+"                                <strong>Period:</strong>"
+msgstr "<br/>\n<strong>Zeitraum:</strong>"
+
+#. module: l10n_de_hr_attendance_time_account
+#: model_terms:ir.ui.view,arch_db:l10n_de_hr_attendance_time_account.report_timesheet
+msgid ""
+"<br/>\n"
+"                            <strong>Period:</strong>"
+msgstr "<br/>\n<strong>Zeitraum:</strong>"
+
+#. module: l10n_de_hr_attendance_time_account
+#: model_terms:ir.ui.view,arch_db:l10n_de_hr_attendance_time_account.view_employee_form
+msgid "<span class=\"o_stat_text\">Time Account</span>"
+msgstr "<span class=\"o_stat_text\">Zeitkonto</span>"
+
+#. module: l10n_de_hr_attendance_time_account
+#: model_terms:ir.ui.view,arch_db:l10n_de_hr_attendance_time_account.res_config_settings_view_form
+msgid "<span>Minus</span>"
+msgstr "<span>Minus</span>"
+
+#. module: l10n_de_hr_attendance_time_account
+#: model_terms:ir.ui.view,arch_db:l10n_de_hr_attendance_time_account.res_config_settings_view_form
+msgid "<span>Plus</span>"
+msgstr "<span>Plus</span>"
+
+#. module: l10n_de_hr_attendance_time_account
+#: model_terms:ir.ui.view,arch_db:l10n_de_hr_attendance_time_account.report_statement
+msgid "<strong>Balance at the end of the period</strong>"
+msgstr "<strong>Saldo am Ende des Zeitraums</strong>"
+
+#. module: l10n_de_hr_attendance_time_account
+#: model_terms:ir.ui.view,arch_db:l10n_de_hr_attendance_time_account.report_statement
+msgid "<strong>Balance carried forward</strong>"
+msgstr "<strong>Saldovortrag</strong>"
+
+#. module: l10n_de_hr_attendance_time_account
+#: model_terms:ir.ui.view,arch_db:l10n_de_hr_attendance_time_account.report_statement
+#: model_terms:ir.ui.view,arch_db:l10n_de_hr_attendance_time_account.report_timesheet
+msgid "<strong>Employee:</strong>"
+msgstr "<strong>Mitarbeiter:</strong>"
+
+#. module: l10n_de_hr_attendance_time_account
+#: model_terms:ir.ui.view,arch_db:l10n_de_hr_attendance_time_account.report_timesheet
+msgid "<strong>Total</strong>"
+msgstr "<strong>Summe</strong>"
+
+#. module: l10n_de_hr_attendance_time_account
+#: model_terms:ir.ui.view,arch_db:l10n_de_hr_attendance_time_account.report_statement
+msgid "<strong>Working schedule:</strong>"
+msgstr "<strong>Arbeitszeitmodell:</strong>"
+
+#. module: l10n_de_hr_attendance_time_account
+#: model:ir.model.fields,help:l10n_de_hr_attendance_time_account.field_hr_employee__time_account_tolerance_minus
+#: model:ir.model.fields,help:l10n_de_hr_attendance_time_account.field_hr_version__time_account_tolerance_minus
+msgid ""
+"A period with up to this many hours less than expected is booked with zero. "
+"Beyond it the whole difference is booked."
+msgstr "Ein Zeitraum mit bis zu so vielen Stunden unter dem Soll wird mit null gebucht. Darüber wird die ganze Abweichung gebucht."
+
+#. module: l10n_de_hr_attendance_time_account
+#: model:ir.model.fields,help:l10n_de_hr_attendance_time_account.field_hr_employee__time_account_tolerance_plus
+#: model:ir.model.fields,help:l10n_de_hr_attendance_time_account.field_hr_version__time_account_tolerance_plus
+msgid ""
+"A period with up to this many hours more than expected is booked with zero. "
+"Beyond it the whole difference is booked."
+msgstr "Ein Zeitraum mit bis zu so vielen Stunden über dem Soll wird mit null gebucht. Darüber wird die ganze Abweichung gebucht."
+
+#. module: l10n_de_hr_attendance_time_account
+#: model:ir.model.fields.selection,name:l10n_de_hr_attendance_time_account.selection__l10n_de_time_account_print__document__statement
+msgid "Account Statement"
+msgstr "Kontoauszug"
+
+#. module: l10n_de_hr_attendance_time_account
+#: model:ir.ui.menu,name:l10n_de_hr_attendance_time_account.menu_time_account_accounts
+msgid "Accounts"
+msgstr "Konten"
+
+#. module: l10n_de_hr_attendance_time_account
+#. odoo-python
+#: code:addons/l10n_de_hr_attendance_time_account/models/time_account_line.py:0
+msgid "An entry booked by hand needs a reason."
+msgstr "Eine Buchung von Hand braucht einen Grund."
+
+#. module: l10n_de_hr_attendance_time_account
+#. odoo-python
+#: code:addons/l10n_de_hr_attendance_time_account/models/time_account_line.py:0
+msgid "An entry needs hours other than zero."
+msgstr "Eine Buchung braucht Stunden ungleich null."
+
+#. module: l10n_de_hr_attendance_time_account
+#: model_terms:ir.ui.view,arch_db:l10n_de_hr_attendance_time_account.report_statement
+#: model_terms:ir.ui.view,arch_db:l10n_de_hr_attendance_time_account.time_account_line_view_list
+msgid "Balance"
+msgstr "Saldo"
+
+#. module: l10n_de_hr_attendance_time_account
+#: model:ir.model.fields,field_description:l10n_de_hr_attendance_time_account.field_hr_employee__time_account_balance_display
+msgid "Balance as Text"
+msgstr "Saldo als Text"
+
+#. module: l10n_de_hr_attendance_time_account
+#: model_terms:ir.ui.view,arch_db:l10n_de_hr_attendance_time_account.report_timesheet
+msgid "Begin"
+msgstr "Beginn"
+
+#. module: l10n_de_hr_attendance_time_account
+#: model_terms:ir.ui.view,arch_db:l10n_de_hr_attendance_time_account.report_timesheet
+msgid ""
+"Begin, end and duration of the daily working time as\n"
+"                            recorded in the attendances. Breaks between two lines of\n"
+"                            a day are not working time."
+msgstr "Beginn, Ende und Dauer der täglichen Arbeitszeit, wie sie in den Anwesenheiten erfasst sind. Pausen zwischen zwei Zeilen eines Tages sind keine Arbeitszeit."
+
+#. module: l10n_de_hr_attendance_time_account
+#: model:ir.model.fields,field_description:l10n_de_hr_attendance_time_account.field_l10n_de_time_account_line__origin_line_id
+msgid "Belongs To"
+msgstr "Gehört zu"
+
+#. module: l10n_de_hr_attendance_time_account
+#: model_terms:ir.ui.view,arch_db:l10n_de_hr_attendance_time_account.time_account_line_view_form_book
+msgid "Book"
+msgstr "Buchen"
+
+#. module: l10n_de_hr_attendance_time_account
+#: model:ir.model.fields,field_description:l10n_de_hr_attendance_time_account.field_hr_employee__time_account_negative
+#: model:ir.model.fields,field_description:l10n_de_hr_attendance_time_account.field_hr_version__time_account_negative
+#: model:ir.model.fields,field_description:l10n_de_hr_attendance_time_account.field_res_company__time_account_negative
+#: model:ir.model.fields,field_description:l10n_de_hr_attendance_time_account.field_res_config_settings__time_account_negative
+#: model_terms:ir.ui.view,arch_db:l10n_de_hr_attendance_time_account.res_config_settings_view_form
+msgid "Book Minus Hours"
+msgstr "Minusstunden buchen"
+
+#. module: l10n_de_hr_attendance_time_account
+#: model:ir.actions.act_window,name:l10n_de_hr_attendance_time_account.time_account_line_action_book
+#: model:ir.ui.menu,name:l10n_de_hr_attendance_time_account.menu_time_account_book
+msgid "Book by Hand"
+msgstr "Von Hand buchen"
+
+#. module: l10n_de_hr_attendance_time_account
+#: model:ir.model.fields.selection,name:l10n_de_hr_attendance_time_account.selection__l10n_de_time_account_line__state__booked
+#: model_terms:ir.ui.view,arch_db:l10n_de_hr_attendance_time_account.report_statement
+msgid "Booked"
+msgstr "Gebucht"
+
+#. module: l10n_de_hr_attendance_time_account
+#: model:ir.model.fields,field_description:l10n_de_hr_attendance_time_account.field_l10n_de_time_account_line__hours
+msgid "Booked Hours"
+msgstr "Gebuchte Stunden"
+
+#. module: l10n_de_hr_attendance_time_account
+#: model_terms:ir.ui.view,arch_db:l10n_de_hr_attendance_time_account.time_account_line_view_search
+msgid "Booked by Hand"
+msgstr "Von Hand gebucht"
+
+#. module: l10n_de_hr_attendance_time_account
+#. odoo-python
+#: code:addons/l10n_de_hr_attendance_time_account/models/time_account_line.py:0
+msgid ""
+"Booked entries are not changed afterwards. Reverse the entry and book it "
+"again. (Fields: %s)"
+msgstr "Gebuchte Buchungen werden nachträglich nicht geändert. Stornieren Sie die Buchung und buchen Sie neu. (Felder: %s)"
+
+#. module: l10n_de_hr_attendance_time_account
+#: model:ir.model.fields,help:l10n_de_hr_attendance_time_account.field_l10n_de_time_account_line__neutral_reason
+msgid ""
+"Books the period with zero, for example when the employer had no work for "
+"the employee. Minus hours must not be booked in that case."
+msgstr "Bucht den Zeitraum mit null, etwa wenn der Arbeitgeber keine Arbeit für den Mitarbeiter hatte. Minusstunden dürfen dann nicht gebucht werden."
+
+#. module: l10n_de_hr_attendance_time_account
+#: model_terms:ir.ui.view,arch_db:l10n_de_hr_attendance_time_account.report_timesheet
+msgid "Break"
+msgstr "Pause"
+
+#. module: l10n_de_hr_attendance_time_account
+#. odoo-python
+#: code:addons/l10n_de_hr_attendance_time_account/models/hr_employee.py:0
+msgid "Change after closing: period %(date_from)s to %(date_to)s"
+msgstr "Änderung nach Abschluss: Zeitraum %(date_from)s bis %(date_to)s"
+
+#. module: l10n_de_hr_attendance_time_account
+#: model:mail.activity.type,summary:l10n_de_hr_attendance_time_account.mail_activity_type_time_account
+msgid "Check the working time account"
+msgstr "Arbeitszeitkonto prüfen"
+
+#. module: l10n_de_hr_attendance_time_account
+#: model_terms:ir.ui.view,arch_db:l10n_de_hr_attendance_time_account.time_account_close_view_form
+#: model_terms:ir.ui.view,arch_db:l10n_de_hr_attendance_time_account.time_account_import_view_form
+msgid "Close"
+msgstr "Abschließen"
+
+#. module: l10n_de_hr_attendance_time_account
+#: model:ir.actions.act_window,name:l10n_de_hr_attendance_time_account.time_account_close_action
+#: model:ir.ui.menu,name:l10n_de_hr_attendance_time_account.menu_time_account_close
+msgid "Close Month"
+msgstr "Monat abschließen"
+
+#. module: l10n_de_hr_attendance_time_account
+#: model:ir.model.fields,field_description:l10n_de_hr_attendance_time_account.field_l10n_de_time_account_close__date
+msgid "Close Until"
+msgstr "Abschließen bis"
+
+#. module: l10n_de_hr_attendance_time_account
+#: model:ir.model,name:l10n_de_hr_attendance_time_account.model_l10n_de_time_account_close
+msgid "Close Working Time Accounts"
+msgstr "Arbeitszeitkonten abschließen"
+
+#. module: l10n_de_hr_attendance_time_account
+#: model:ir.model.fields,field_description:l10n_de_hr_attendance_time_account.field_l10n_de_time_account_line__locked
+msgid "Closed"
+msgstr "Abgeschlossen"
+
+#. module: l10n_de_hr_attendance_time_account
+#: model_terms:ir.ui.view,arch_db:l10n_de_hr_attendance_time_account.res_config_settings_view_form
+msgid "Closed Until"
+msgstr "Abgeschlossen bis"
+
+#. module: l10n_de_hr_attendance_time_account
+#: model:ir.model.fields,field_description:l10n_de_hr_attendance_time_account.field_l10n_de_time_account_close__lock_date
+msgid "Closed Until Now"
+msgstr "Bisher abgeschlossen bis"
+
+#. module: l10n_de_hr_attendance_time_account
+#: model_terms:ir.ui.view,arch_db:l10n_de_hr_attendance_time_account.time_account_close_view_form
+msgid ""
+"Closed periods are not computed again. When attendances or time\n"
+"                    off of a closed period change later, book the difference as a\n"
+"                    correction with the button below."
+msgstr "Abgeschlossene Zeiträume werden nicht neu berechnet. Ändern sich später Anwesenheiten oder Abwesenheiten eines abgeschlossenen Zeitraums, buchen Sie die Differenz mit dem Knopf unten als Korrektur."
+
+#. module: l10n_de_hr_attendance_time_account
+#: model:ir.model,name:l10n_de_hr_attendance_time_account.model_res_company
+#: model:ir.model.fields,field_description:l10n_de_hr_attendance_time_account.field_l10n_de_time_account_close__company_id
+#: model:ir.model.fields,field_description:l10n_de_hr_attendance_time_account.field_l10n_de_time_account_line__company_id
+msgid "Company"
+msgstr "Unternehmen"
+
+#. module: l10n_de_hr_attendance_time_account
+#: model_terms:ir.ui.view,arch_db:l10n_de_hr_attendance_time_account.time_account_import_view_form
+msgid "Compare with the Computation"
+msgstr "Mit der Berechnung vergleichen"
+
+#. module: l10n_de_hr_attendance_time_account
+#: model_terms:ir.ui.view,arch_db:l10n_de_hr_attendance_time_account.time_account_close_view_form
+msgid "Compute Now"
+msgstr "Jetzt berechnen"
+
+#. module: l10n_de_hr_attendance_time_account
+#: model:ir.model,name:l10n_de_hr_attendance_time_account.model_res_config_settings
+msgid "Config Settings"
+msgstr "Konfigurationseinstellungen"
+
+#. module: l10n_de_hr_attendance_time_account
+#: model_terms:ir.ui.view,arch_db:l10n_de_hr_attendance_time_account.time_account_line_view_form
+#: model_terms:ir.ui.view,arch_db:l10n_de_hr_attendance_time_account.time_account_line_view_list
+msgid "Confirm Minus Hours"
+msgstr "Minusstunden bestätigen"
+
+#. module: l10n_de_hr_attendance_time_account
+#: model_terms:ir.ui.view,arch_db:l10n_de_hr_attendance_time_account.time_account_close_view_form
+msgid "Correct Closed Periods"
+msgstr "Abgeschlossene Zeiträume korrigieren"
+
+#. module: l10n_de_hr_attendance_time_account
+#: model:ir.model.fields.selection,name:l10n_de_hr_attendance_time_account.selection__l10n_de_time_account_line__kind__adjustment
+msgid "Correction"
+msgstr "Korrektur"
+
+#. module: l10n_de_hr_attendance_time_account
+#: model:ir.model.fields,field_description:l10n_de_hr_attendance_time_account.field_l10n_de_time_account_line__correction_hours
+msgid "Correction Hours"
+msgstr "Korrekturstunden"
+
+#. module: l10n_de_hr_attendance_time_account
+#: model:ir.model.fields,field_description:l10n_de_hr_attendance_time_account.field_l10n_de_time_account_close__create_uid
+#: model:ir.model.fields,field_description:l10n_de_hr_attendance_time_account.field_l10n_de_time_account_import__create_uid
+#: model:ir.model.fields,field_description:l10n_de_hr_attendance_time_account.field_l10n_de_time_account_line__create_uid
+#: model:ir.model.fields,field_description:l10n_de_hr_attendance_time_account.field_l10n_de_time_account_print__create_uid
+msgid "Created by"
+msgstr "Erstellt von"
+
+#. module: l10n_de_hr_attendance_time_account
+#: model:ir.model.fields,field_description:l10n_de_hr_attendance_time_account.field_l10n_de_time_account_close__create_date
+#: model:ir.model.fields,field_description:l10n_de_hr_attendance_time_account.field_l10n_de_time_account_import__create_date
+#: model:ir.model.fields,field_description:l10n_de_hr_attendance_time_account.field_l10n_de_time_account_line__create_date
+#: model:ir.model.fields,field_description:l10n_de_hr_attendance_time_account.field_l10n_de_time_account_print__create_date
+msgid "Created on"
+msgstr "Erstellt am"
+
+#. module: l10n_de_hr_attendance_time_account
+#: model:ir.model.fields,field_description:l10n_de_hr_attendance_time_account.field_l10n_de_time_account_line__date
+#: model_terms:ir.ui.view,arch_db:l10n_de_hr_attendance_time_account.report_statement
+#: model_terms:ir.ui.view,arch_db:l10n_de_hr_attendance_time_account.report_timesheet
+#: model_terms:ir.ui.view,arch_db:l10n_de_hr_attendance_time_account.time_account_line_view_search
+msgid "Date"
+msgstr "Datum"
+
+#. module: l10n_de_hr_attendance_time_account
+#: model:ir.model.fields,field_description:l10n_de_hr_attendance_time_account.field_l10n_de_time_account_print__date_from
+msgid "Date From"
+msgstr "Von"
+
+#. module: l10n_de_hr_attendance_time_account
+#: model:ir.model.fields,field_description:l10n_de_hr_attendance_time_account.field_l10n_de_time_account_print__date_to
+msgid "Date To"
+msgstr "Bis"
+
+#. module: l10n_de_hr_attendance_time_account
+#: model:ir.model.fields,field_description:l10n_de_hr_attendance_time_account.field_l10n_de_time_account_import__date_warning
+msgid "Date Warning"
+msgstr "Hinweis zum Datum"
+
+#. module: l10n_de_hr_attendance_time_account
+#: model:ir.model.fields.selection,name:l10n_de_hr_attendance_time_account.selection__l10n_de_time_account_line__period__day
+msgid "Day"
+msgstr "Tag"
+
+#. module: l10n_de_hr_attendance_time_account
+#: model:ir.model.fields,field_description:l10n_de_hr_attendance_time_account.field_l10n_de_time_account_line__unexplained_days
+msgid "Days Without Attendance"
+msgstr "Tage ohne Anwesenheit"
+
+#. module: l10n_de_hr_attendance_time_account
+#: model:ir.model.fields,field_description:l10n_de_hr_attendance_time_account.field_hr_work_entry_type__time_account_deduct
+msgid "Deducted from the Working Time Account"
+msgstr "Wird vom Arbeitszeitkonto abgebucht"
+
+#. module: l10n_de_hr_attendance_time_account
+#: model:ir.model.fields,help:l10n_de_hr_attendance_time_account.field_res_company__time_account_tolerance_minus
+#: model:ir.model.fields,help:l10n_de_hr_attendance_time_account.field_res_config_settings__time_account_tolerance_minus
+msgid ""
+"Default for new contract versions. A period with up to this many hours less "
+"than expected is booked with zero."
+msgstr "Vorgabe für neue Vertragsversionen. Ein Zeitraum mit bis zu so vielen Stunden unter dem Soll wird mit null gebucht."
+
+#. module: l10n_de_hr_attendance_time_account
+#: model:ir.model.fields,help:l10n_de_hr_attendance_time_account.field_res_company__time_account_tolerance_plus
+#: model:ir.model.fields,help:l10n_de_hr_attendance_time_account.field_res_config_settings__time_account_tolerance_plus
+msgid ""
+"Default for new contract versions. A period with up to this many hours more "
+"than expected is booked with zero."
+msgstr "Vorgabe für neue Vertragsversionen. Ein Zeitraum mit bis zu so vielen Stunden über dem Soll wird mit null gebucht."
+
+#. module: l10n_de_hr_attendance_time_account
+#: model:ir.model.fields,help:l10n_de_hr_attendance_time_account.field_res_company__time_account_negative
+#: model:ir.model.fields,help:l10n_de_hr_attendance_time_account.field_res_config_settings__time_account_negative
+#: model_terms:ir.ui.view,arch_db:l10n_de_hr_attendance_time_account.res_config_settings_view_form
+msgid ""
+"Default for new contract versions. Minus hours need an agreement with the "
+"employee."
+msgstr "Vorgabe für neue Vertragsversionen. Minusstunden brauchen eine Vereinbarung mit dem Mitarbeiter."
+
+#. module: l10n_de_hr_attendance_time_account
+#: model_terms:ir.ui.view,arch_db:l10n_de_hr_attendance_time_account.res_config_settings_view_form
+msgid ""
+"Default for new contract versions: compare worked hours to the working "
+"schedule per day, week or month. Each employee can differ."
+msgstr "Vorgabe für neue Vertragsversionen: gearbeitete Stunden je Tag, Woche oder Monat mit dem Arbeitszeitmodell vergleichen. Jeder Mitarbeiter kann abweichen."
+
+#. module: l10n_de_hr_attendance_time_account
+#: model_terms:ir.ui.view,arch_db:l10n_de_hr_attendance_time_account.res_config_settings_view_form
+msgid ""
+"Default for new contract versions: differences up to these hours are booked "
+"with zero."
+msgstr "Vorgabe für neue Vertragsversionen: Abweichungen bis zu diesen Stunden werden mit null gebucht."
+
+#. module: l10n_de_hr_attendance_time_account
+#: model:ir.model.fields,help:l10n_de_hr_attendance_time_account.field_res_company__time_account_period
+#: model:ir.model.fields,help:l10n_de_hr_attendance_time_account.field_res_config_settings__time_account_period
+msgid ""
+"Default for new contract versions: the period over which worked hours are "
+"compared to the hours of the working schedule."
+msgstr "Vorgabe für neue Vertragsversionen: der Zeitraum, über den gearbeitete Stunden mit den Stunden des Arbeitszeitmodells verglichen werden."
+
+#. module: l10n_de_hr_attendance_time_account
+#: model:ir.model.fields.selection,name:l10n_de_hr_attendance_time_account.selection__l10n_de_time_account_line__kind__deviation
+msgid "Deviation"
+msgstr "Abweichung"
+
+#. module: l10n_de_hr_attendance_time_account
+#: model:ir.model.fields,field_description:l10n_de_hr_attendance_time_account.field_l10n_de_time_account_line__deviation_hours
+#: model_terms:ir.ui.view,arch_db:l10n_de_hr_attendance_time_account.report_statement
+msgid "Difference"
+msgstr "Differenz"
+
+#. module: l10n_de_hr_attendance_time_account
+#: model_terms:ir.ui.view,arch_db:l10n_de_hr_attendance_time_account.time_account_close_view_form
+#: model_terms:ir.ui.view,arch_db:l10n_de_hr_attendance_time_account.time_account_line_view_form_book
+#: model_terms:ir.ui.view,arch_db:l10n_de_hr_attendance_time_account.time_account_print_view_form
+msgid "Discard"
+msgstr "Verwerfen"
+
+#. module: l10n_de_hr_attendance_time_account
+#: model:ir.model.fields,field_description:l10n_de_hr_attendance_time_account.field_hr_employee__display_name
+#: model:ir.model.fields,field_description:l10n_de_hr_attendance_time_account.field_hr_version__display_name
+#: model:ir.model.fields,field_description:l10n_de_hr_attendance_time_account.field_hr_work_entry_type__display_name
+#: model:ir.model.fields,field_description:l10n_de_hr_attendance_time_account.field_l10n_de_time_account_close__display_name
+#: model:ir.model.fields,field_description:l10n_de_hr_attendance_time_account.field_l10n_de_time_account_import__display_name
+#: model:ir.model.fields,field_description:l10n_de_hr_attendance_time_account.field_l10n_de_time_account_line__display_name
+#: model:ir.model.fields,field_description:l10n_de_hr_attendance_time_account.field_l10n_de_time_account_print__display_name
+#: model:ir.model.fields,field_description:l10n_de_hr_attendance_time_account.field_l10n_de_time_account_report_mixin__display_name
+#: model:ir.model.fields,field_description:l10n_de_hr_attendance_time_account.field_report_l10n_de_hr_attendance_time_account_report_statement__display_name
+#: model:ir.model.fields,field_description:l10n_de_hr_attendance_time_account.field_report_l10n_de_hr_attendance_time_account_report_timesheet__display_name
+#: model:ir.model.fields,field_description:l10n_de_hr_attendance_time_account.field_res_company__display_name
+#: model:ir.model.fields,field_description:l10n_de_hr_attendance_time_account.field_res_config_settings__display_name
+msgid "Display Name"
+msgstr "Anzeigename"
+
+#. module: l10n_de_hr_attendance_time_account
+#: model:ir.model.fields,field_description:l10n_de_hr_attendance_time_account.field_l10n_de_time_account_print__document
+msgid "Document"
+msgstr "Dokument"
+
+#. module: l10n_de_hr_attendance_time_account
+#: model_terms:ir.ui.view,arch_db:l10n_de_hr_attendance_time_account.report_timesheet
+msgid "Duration"
+msgstr "Dauer"
+
+#. module: l10n_de_hr_attendance_time_account
+#: model:ir.model,name:l10n_de_hr_attendance_time_account.model_hr_employee
+#: model:ir.model.fields,field_description:l10n_de_hr_attendance_time_account.field_l10n_de_time_account_line__employee_id
+#: model_terms:ir.ui.view,arch_db:l10n_de_hr_attendance_time_account.time_account_line_view_search
+msgid "Employee"
+msgstr "Mitarbeiter"
+
+#. module: l10n_de_hr_attendance_time_account
+#: model:ir.model,name:l10n_de_hr_attendance_time_account.model_hr_version
+msgid "Employee Contract"
+msgstr "Mitarbeitervertrag"
+
+#. module: l10n_de_hr_attendance_time_account
+#: model:ir.model.fields,field_description:l10n_de_hr_attendance_time_account.field_l10n_de_time_account_print__employee_ids
+msgid "Employees"
+msgstr "Mitarbeiter"
+
+#. module: l10n_de_hr_attendance_time_account
+#: model_terms:ir.ui.view,arch_db:l10n_de_hr_attendance_time_account.report_timesheet
+msgid "End"
+msgstr "Ende"
+
+#. module: l10n_de_hr_attendance_time_account
+#: model:ir.actions.act_window,name:l10n_de_hr_attendance_time_account.time_account_line_action_all
+#: model:ir.ui.menu,name:l10n_de_hr_attendance_time_account.menu_time_account_lines
+#: model_terms:ir.ui.view,arch_db:l10n_de_hr_attendance_time_account.hr_employee_view_list_time_account
+msgid "Entries"
+msgstr "Buchungen"
+
+#. module: l10n_de_hr_attendance_time_account
+#: model:ir.model.fields,field_description:l10n_de_hr_attendance_time_account.field_l10n_de_time_account_import__legacy_count
+msgid "Entries in Odoo 19"
+msgstr "Buchungen in Odoo 19"
+
+#. module: l10n_de_hr_attendance_time_account
+#. odoo-python
+#: code:addons/l10n_de_hr_attendance_time_account/models/time_account_line.py:0
+msgid ""
+"Entries of the working time account are not deleted. Reverse the entry "
+"instead."
+msgstr "Buchungen des Arbeitszeitkontos werden nicht gelöscht. Stornieren Sie die Buchung stattdessen."
+
+#. module: l10n_de_hr_attendance_time_account
+#. odoo-python
+#: code:addons/l10n_de_hr_attendance_time_account/models/time_account_line.py:0
+msgid "Entries of this kind are booked by the system only."
+msgstr "Buchungen dieser Art bucht nur das System."
+
+#. module: l10n_de_hr_attendance_time_account
+#: model:ir.model.fields,help:l10n_de_hr_attendance_time_account.field_l10n_de_time_account_close__lock_date
+#: model:ir.model.fields,help:l10n_de_hr_attendance_time_account.field_res_company__time_account_lock_date
+#: model:ir.model.fields,help:l10n_de_hr_attendance_time_account.field_res_config_settings__time_account_lock_date
+msgid ""
+"Entries up to and including this date are closed: they are neither computed "
+"again nor changed."
+msgstr "Buchungen bis einschließlich dieses Datums sind abgeschlossen: Sie werden weder neu berechnet noch geändert."
+
+#. module: l10n_de_hr_attendance_time_account
+#: model:ir.model.fields,help:l10n_de_hr_attendance_time_account.field_l10n_de_time_account_close__date
+msgid ""
+"Entries up to and including this date are not computed again and cannot be "
+"changed."
+msgstr "Buchungen bis einschließlich dieses Datums werden nicht neu berechnet und lassen sich nicht ändern."
+
+#. module: l10n_de_hr_attendance_time_account
+#: model_terms:ir.ui.view,arch_db:l10n_de_hr_attendance_time_account.report_statement
+msgid "Entry"
+msgstr "Buchung"
+
+#. module: l10n_de_hr_attendance_time_account
+#: model_terms:ir.ui.view,arch_db:l10n_de_hr_attendance_time_account.report_statement
+msgid "Expected"
+msgstr "Soll"
+
+#. module: l10n_de_hr_attendance_time_account
+#: model:ir.model.fields,field_description:l10n_de_hr_attendance_time_account.field_l10n_de_time_account_line__expected_hours
+msgid "Expected Hours"
+msgstr "Sollstunden"
+
+#. module: l10n_de_hr_attendance_time_account
+#: model:ir.model.fields,help:l10n_de_hr_attendance_time_account.field_hr_employee__time_account_milog
+#: model:ir.model.fields,help:l10n_de_hr_attendance_time_account.field_hr_version__time_account_milog
+msgid ""
+"For accounts under the German Minimum Wage Act: warn when plus hours get "
+"twelve months old and when more than half of the agreed monthly working time"
+" is added in a month."
+msgstr "Für Konten nach dem Mindestlohngesetz: Hinweis, wenn Plusstunden zwölf Monate alt werden und wenn in einem Monat mehr als die Hälfte der vereinbarten Monatsarbeitszeit hinzukommt."
+
+#. module: l10n_de_hr_attendance_time_account
+#: model:ir.model.fields,help:l10n_de_hr_attendance_time_account.field_l10n_de_time_account_line__date
+msgid "For computed entries the last day of the period."
+msgstr "Bei berechneten Buchungen der letzte Tag des Zeitraums."
+
+#. module: l10n_de_hr_attendance_time_account
+#: model_terms:ir.ui.view,arch_db:l10n_de_hr_attendance_time_account.time_account_import_view_form
+msgid ""
+"For databases that came from Odoo 19: takes over the overtime\n"
+"                    balance as it was, so every employee keeps their balance. The\n"
+"                    working time account is computed from the following day on."
+msgstr "Für Datenbanken, die von Odoo 19 kommen: übernimmt den Überstundensaldo, wie er war, sodass jeder Mitarbeiter seinen Saldo behält. Das Arbeitszeitkonto wird ab dem folgenden Tag berechnet."
+
+#. module: l10n_de_hr_attendance_time_account
+#: model:ir.model.fields.selection,name:l10n_de_hr_attendance_time_account.selection__l10n_de_time_account_line__kind__forfeit
+msgid "Forfeiture"
+msgstr "Verfall"
+
+#. module: l10n_de_hr_attendance_time_account
+#: model_terms:ir.ui.view,arch_db:l10n_de_hr_attendance_time_account.report_statement
+msgid ""
+"Hours and minutes. Expected hours follow the working\n"
+"                            schedule, reduced by public holidays and time off that\n"
+"                            counts as worked."
+msgstr "Stunden und Minuten. Das Soll folgt dem Arbeitszeitmodell, gekürzt um Feiertage und Abwesenheiten, die als geleistet gelten."
+
+#. module: l10n_de_hr_attendance_time_account
+#: model:ir.model.fields,field_description:l10n_de_hr_attendance_time_account.field_hr_employee__id
+#: model:ir.model.fields,field_description:l10n_de_hr_attendance_time_account.field_hr_version__id
+#: model:ir.model.fields,field_description:l10n_de_hr_attendance_time_account.field_hr_work_entry_type__id
+#: model:ir.model.fields,field_description:l10n_de_hr_attendance_time_account.field_l10n_de_time_account_close__id
+#: model:ir.model.fields,field_description:l10n_de_hr_attendance_time_account.field_l10n_de_time_account_import__id
+#: model:ir.model.fields,field_description:l10n_de_hr_attendance_time_account.field_l10n_de_time_account_line__id
+#: model:ir.model.fields,field_description:l10n_de_hr_attendance_time_account.field_l10n_de_time_account_print__id
+#: model:ir.model.fields,field_description:l10n_de_hr_attendance_time_account.field_l10n_de_time_account_report_mixin__id
+#: model:ir.model.fields,field_description:l10n_de_hr_attendance_time_account.field_report_l10n_de_hr_attendance_time_account_report_statement__id
+#: model:ir.model.fields,field_description:l10n_de_hr_attendance_time_account.field_report_l10n_de_hr_attendance_time_account_report_timesheet__id
+#: model:ir.model.fields,field_description:l10n_de_hr_attendance_time_account.field_res_company__id
+#: model:ir.model.fields,field_description:l10n_de_hr_attendance_time_account.field_res_config_settings__id
+msgid "ID"
+msgstr "ID"
+
+#. module: l10n_de_hr_attendance_time_account
+#: model:ir.model.fields,field_description:l10n_de_hr_attendance_time_account.field_l10n_de_time_account_line__kind
+#: model_terms:ir.ui.view,arch_db:l10n_de_hr_attendance_time_account.time_account_line_view_search
+msgid "Kind"
+msgstr "Art"
+
+#. module: l10n_de_hr_attendance_time_account
+#: model:ir.model.fields,field_description:l10n_de_hr_attendance_time_account.field_l10n_de_time_account_close__write_uid
+#: model:ir.model.fields,field_description:l10n_de_hr_attendance_time_account.field_l10n_de_time_account_import__write_uid
+#: model:ir.model.fields,field_description:l10n_de_hr_attendance_time_account.field_l10n_de_time_account_line__write_uid
+#: model:ir.model.fields,field_description:l10n_de_hr_attendance_time_account.field_l10n_de_time_account_print__write_uid
+msgid "Last Updated by"
+msgstr "Zuletzt aktualisiert von"
+
+#. module: l10n_de_hr_attendance_time_account
+#: model:ir.model.fields,field_description:l10n_de_hr_attendance_time_account.field_l10n_de_time_account_close__write_date
+#: model:ir.model.fields,field_description:l10n_de_hr_attendance_time_account.field_l10n_de_time_account_import__write_date
+#: model:ir.model.fields,field_description:l10n_de_hr_attendance_time_account.field_l10n_de_time_account_line__write_date
+#: model:ir.model.fields,field_description:l10n_de_hr_attendance_time_account.field_l10n_de_time_account_print__write_date
+msgid "Last Updated on"
+msgstr "Zuletzt aktualisiert am"
+
+#. module: l10n_de_hr_attendance_time_account
+#: model:ir.model.fields,field_description:l10n_de_hr_attendance_time_account.field_l10n_de_time_account_line__confirmed
+msgid "Minus Confirmed"
+msgstr "Minus bestätigt"
+
+#. module: l10n_de_hr_attendance_time_account
+#: model:ir.model.fields,help:l10n_de_hr_attendance_time_account.field_hr_employee__time_account_negative
+#: model:ir.model.fields,help:l10n_de_hr_attendance_time_account.field_hr_version__time_account_negative
+msgid ""
+"Minus hours need an agreement with the employee. Without it, periods with "
+"less than the expected hours are booked with zero."
+msgstr "Minusstunden brauchen eine Vereinbarung mit dem Mitarbeiter. Ohne sie werden Zeiträume unter dem Soll mit null gebucht."
+
+#. module: l10n_de_hr_attendance_time_account
+#: model:ir.model.fields,field_description:l10n_de_hr_attendance_time_account.field_hr_employee__time_account_milog
+#: model:ir.model.fields,field_description:l10n_de_hr_attendance_time_account.field_hr_version__time_account_milog
+msgid "Monitor § 2 (2) MiLoG"
+msgstr "§ 2 Abs. 2 MiLoG überwachen"
+
+#. module: l10n_de_hr_attendance_time_account
+#: model:ir.model.fields.selection,name:l10n_de_hr_attendance_time_account.selection__l10n_de_time_account_line__period__month
+#: model_terms:ir.ui.view,arch_db:l10n_de_hr_attendance_time_account.time_account_line_view_search
+msgid "Month"
+msgstr "Monat"
+
+#. module: l10n_de_hr_attendance_time_account
+#: model:ir.actions.act_window,name:l10n_de_hr_attendance_time_account.time_account_line_action_my
+#: model:ir.ui.menu,name:l10n_de_hr_attendance_time_account.menu_time_account_my
+msgid "My Working Time Account"
+msgstr "Mein Arbeitszeitkonto"
+
+#. module: l10n_de_hr_attendance_time_account
+#: model:ir.model.fields.selection,name:l10n_de_hr_attendance_time_account.selection__hr_version__time_account_period__none
+#: model:ir.model.fields.selection,name:l10n_de_hr_attendance_time_account.selection__res_company__time_account_period__none
+msgid "No working time account"
+msgstr "Kein Arbeitszeitkonto"
+
+#. module: l10n_de_hr_attendance_time_account
+#: model:ir.model.fields,field_description:l10n_de_hr_attendance_time_account.field_l10n_de_time_account_line__neutral_reason
+msgid "Not Booked Because"
+msgstr "Nicht gebucht, weil"
+
+#. module: l10n_de_hr_attendance_time_account
+#: model_terms:ir.ui.view,arch_db:l10n_de_hr_attendance_time_account.report_statement
+msgid "Not booked:"
+msgstr "Nicht gebucht:"
+
+#. module: l10n_de_hr_attendance_time_account
+#: model:ir.model.fields,help:l10n_de_hr_attendance_time_account.field_hr_employee__time_account_start
+msgid ""
+"Nothing is computed before this date. Empty: the account starts the day it "
+"is computed for the first time."
+msgstr "Vor diesem Datum wird nichts berechnet. Leer: Das Konto beginnt an dem Tag, an dem es zum ersten Mal berechnet wird."
+
+#. module: l10n_de_hr_attendance_time_account
+#. odoo-python
+#: code:addons/l10n_de_hr_attendance_time_account/models/time_account_line.py:0
+msgid "Only entries booked by hand can be reversed."
+msgstr "Nur Buchungen von Hand lassen sich stornieren."
+
+#. module: l10n_de_hr_attendance_time_account
+#. odoo-python
+#: code:addons/l10n_de_hr_attendance_time_account/wizard/time_account_close.py:0
+msgid "Only periods in the past can be closed."
+msgstr "Nur vergangene Zeiträume lassen sich abschließen."
+
+#. module: l10n_de_hr_attendance_time_account
+#: model:ir.model.fields.selection,name:l10n_de_hr_attendance_time_account.selection__l10n_de_time_account_line__kind__opening
+msgid "Opening Balance"
+msgstr "Vortrag"
+
+#. module: l10n_de_hr_attendance_time_account
+#: model_terms:ir.ui.view,arch_db:l10n_de_hr_attendance_time_account.time_account_line_view_form_book
+msgid ""
+"Opening balance, correction, payout or forfeiture. Enter payouts\n"
+"                    and forfeitures with negative hours. Deviations are computed, not\n"
+"                    booked by hand."
+msgstr "Vortrag, Korrektur, Auszahlung oder Verfall. Auszahlungen und Verfall mit negativen Stunden eingeben. Abweichungen werden berechnet, nicht von Hand gebucht."
+
+#. module: l10n_de_hr_attendance_time_account
+#: model:ir.model.fields,help:l10n_de_hr_attendance_time_account.field_l10n_de_time_account_import__date
+msgid ""
+"Overtime of Odoo 19 up to and including this date is taken over as it is. "
+"The working time account is computed from the following day on. Take the end"
+" of a period: a Sunday for accounts compared per week, the last day of a "
+"month for accounts compared per month."
+msgstr "Überstunden aus Odoo 19 bis einschließlich dieses Datums werden übernommen, wie sie sind. Das Arbeitszeitkonto wird ab dem folgenden Tag berechnet. Nehmen Sie das Ende eines Zeitraums: einen Sonntag bei Konten je Woche, den letzten Tag eines Monats bei Konten je Monat."
+
+#. module: l10n_de_hr_attendance_time_account
+#: model:ir.model.fields.selection,name:l10n_de_hr_attendance_time_account.selection__l10n_de_time_account_line__kind__payout
+msgid "Payout"
+msgstr "Auszahlung"
+
+#. module: l10n_de_hr_attendance_time_account
+#: model:ir.model.fields.selection,name:l10n_de_hr_attendance_time_account.selection__hr_version__time_account_period__day
+#: model:ir.model.fields.selection,name:l10n_de_hr_attendance_time_account.selection__res_company__time_account_period__day
+msgid "Per day"
+msgstr "Je Tag"
+
+#. module: l10n_de_hr_attendance_time_account
+#: model:ir.model.fields.selection,name:l10n_de_hr_attendance_time_account.selection__hr_version__time_account_period__month
+#: model:ir.model.fields.selection,name:l10n_de_hr_attendance_time_account.selection__res_company__time_account_period__month
+msgid "Per month"
+msgstr "Je Monat"
+
+#. module: l10n_de_hr_attendance_time_account
+#: model:ir.model.fields.selection,name:l10n_de_hr_attendance_time_account.selection__hr_version__time_account_period__week
+#: model:ir.model.fields.selection,name:l10n_de_hr_attendance_time_account.selection__res_company__time_account_period__week
+msgid "Per week"
+msgstr "Je Woche"
+
+#. module: l10n_de_hr_attendance_time_account
+#: model:ir.model.fields,field_description:l10n_de_hr_attendance_time_account.field_l10n_de_time_account_line__period
+#: model_terms:ir.ui.view,arch_db:l10n_de_hr_attendance_time_account.time_account_print_view_form
+msgid "Period"
+msgstr "Zeitraum"
+
+#. module: l10n_de_hr_attendance_time_account
+#: model:ir.model.fields,field_description:l10n_de_hr_attendance_time_account.field_l10n_de_time_account_line__date_from
+msgid "Period Start"
+msgstr "Beginn des Zeitraums"
+
+#. module: l10n_de_hr_attendance_time_account
+#: model:ir.model.fields,help:l10n_de_hr_attendance_time_account.field_hr_employee__time_account_period
+#: model:ir.model.fields,help:l10n_de_hr_attendance_time_account.field_hr_version__time_account_period
+msgid ""
+"Period over which worked hours are compared to the hours of the working "
+"schedule. Schedules without fixed days are compared per week at least."
+msgstr "Zeitraum, über den gearbeitete Stunden mit den Stunden des Arbeitszeitmodells verglichen werden. Modelle ohne feste Tage werden mindestens je Woche verglichen."
+
+#. module: l10n_de_hr_attendance_time_account
+#: model:ir.model.fields,field_description:l10n_de_hr_attendance_time_account.field_hr_employee__time_account_to_clarify
+#: model:ir.model.fields,field_description:l10n_de_hr_attendance_time_account.field_l10n_de_time_account_close__to_clarify_ids
+msgid "Periods to Clarify"
+msgstr "Zu klärende Zeiträume"
+
+#. module: l10n_de_hr_attendance_time_account
+#: model:ir.model.fields,field_description:l10n_de_hr_attendance_time_account.field_hr_employee__time_account_due_date
+msgid "Plus Hours Due"
+msgstr "Plusstunden fällig"
+
+#. module: l10n_de_hr_attendance_time_account
+#: model:ir.model.fields,field_description:l10n_de_hr_attendance_time_account.field_hr_employee__time_account_due_hours
+msgid "Plus Hours Due (Hours)"
+msgstr "Fällige Plusstunden (Stunden)"
+
+#. module: l10n_de_hr_attendance_time_account
+#: model_terms:ir.ui.view,arch_db:l10n_de_hr_attendance_time_account.time_account_print_view_form
+msgid "Print"
+msgstr "Drucken"
+
+#. module: l10n_de_hr_attendance_time_account
+#: model:ir.model,name:l10n_de_hr_attendance_time_account.model_l10n_de_time_account_print
+msgid "Print Working Time Account Documents"
+msgstr "Dokumente zum Arbeitszeitkonto drucken"
+
+#. module: l10n_de_hr_attendance_time_account
+#: model:ir.model.fields,field_description:l10n_de_hr_attendance_time_account.field_l10n_de_time_account_line__name
+msgid "Reason"
+msgstr "Grund"
+
+#. module: l10n_de_hr_attendance_time_account
+#: model:ir.actions.report,name:l10n_de_hr_attendance_time_account.action_report_timesheet
+#: model:ir.model,name:l10n_de_hr_attendance_time_account.model_report_l10n_de_hr_attendance_time_account_report_timesheet
+#: model:ir.model.fields.selection,name:l10n_de_hr_attendance_time_account.selection__l10n_de_time_account_print__document__timesheet
+#: model_terms:ir.ui.view,arch_db:l10n_de_hr_attendance_time_account.report_timesheet
+msgid "Record of Working Time"
+msgstr "Arbeitszeitnachweis"
+
+#. module: l10n_de_hr_attendance_time_account
+#: model:ir.model.fields,field_description:l10n_de_hr_attendance_time_account.field_l10n_de_time_account_line__legacy_ref
+msgid "Reference in the Previous System"
+msgstr "Referenz im Vorsystem"
+
+#. module: l10n_de_hr_attendance_time_account
+#: model:ir.model.fields,field_description:l10n_de_hr_attendance_time_account.field_l10n_de_time_account_import__result
+msgid "Result"
+msgstr "Ergebnis"
+
+#. module: l10n_de_hr_attendance_time_account
+#: model:ir.model.fields,field_description:l10n_de_hr_attendance_time_account.field_l10n_de_time_account_line__reversal_ids
+msgid "Reversal"
+msgstr "Storno"
+
+#. module: l10n_de_hr_attendance_time_account
+#. odoo-python
+#: code:addons/l10n_de_hr_attendance_time_account/models/time_account_line.py:0
+msgid "Reversal of %(date)s: %(reason)s"
+msgstr "Storno vom %(date)s: %(reason)s"
+
+#. module: l10n_de_hr_attendance_time_account
+#: model_terms:ir.ui.view,arch_db:l10n_de_hr_attendance_time_account.time_account_line_view_form
+#: model_terms:ir.ui.view,arch_db:l10n_de_hr_attendance_time_account.time_account_line_view_list
+msgid "Reverse"
+msgstr "Stornieren"
+
+#. module: l10n_de_hr_attendance_time_account
+#: model:ir.model.fields,help:l10n_de_hr_attendance_time_account.field_l10n_de_time_account_line__unexplained_days
+msgid "Scheduled days of the period without attendance and without time off."
+msgstr "Geplante Tage des Zeitraums ohne Anwesenheit und ohne Abwesenheit."
+
+#. module: l10n_de_hr_attendance_time_account
+#: model_terms:ir.ui.view,arch_db:l10n_de_hr_attendance_time_account.res_config_settings_view_form
+msgid "Set by closing a month under Attendances / Working Time Account."
+msgstr "Wird beim Monatsabschluss unter Anwesenheiten / Arbeitszeitkonto gesetzt."
+
+#. module: l10n_de_hr_attendance_time_account
+#: model:ir.model.fields,help:l10n_de_hr_attendance_time_account.field_l10n_de_time_account_import__with_settings
+msgid ""
+"Set period and tolerances of the contract versions from the overtime ruleset"
+" they had in Odoo 19, where no working time account is set yet."
+msgstr "Zeitraum und Toleranzen der Vertragsversionen aus dem Überstunden-Regelwerk setzen, das sie in Odoo 19 hatten, soweit noch kein Arbeitszeitkonto eingestellt ist."
+
+#. module: l10n_de_hr_attendance_time_account
+#: model:ir.model.fields,field_description:l10n_de_hr_attendance_time_account.field_l10n_de_time_account_line__state
+msgid "State"
+msgstr "Status"
+
+#. module: l10n_de_hr_attendance_time_account
+#: model:ir.actions.act_window,name:l10n_de_hr_attendance_time_account.time_account_print_action
+#: model:ir.ui.menu,name:l10n_de_hr_attendance_time_account.menu_time_account_print
+msgid "Statements and Records"
+msgstr "Auszüge und Nachweise"
+
+#. module: l10n_de_hr_attendance_time_account
+#: model:ir.model.fields,help:l10n_de_hr_attendance_time_account.field_l10n_de_time_account_line__correction_hours
+msgid "Sum of the corrections booked for this period after it was closed."
+msgstr "Summe der Korrekturen, die für diesen Zeitraum nach dem Abschluss gebucht wurden."
+
+#. module: l10n_de_hr_attendance_time_account
+#: model_terms:ir.ui.view,arch_db:l10n_de_hr_attendance_time_account.time_account_import_view_form
+msgid "Take Over"
+msgstr "Übernehmen"
+
+#. module: l10n_de_hr_attendance_time_account
+#: model:ir.model.fields,field_description:l10n_de_hr_attendance_time_account.field_l10n_de_time_account_import__date
+msgid "Take Over Until"
+msgstr "Übernehmen bis"
+
+#. module: l10n_de_hr_attendance_time_account
+#: model:ir.actions.act_window,name:l10n_de_hr_attendance_time_account.time_account_import_action
+#: model:ir.ui.menu,name:l10n_de_hr_attendance_time_account.menu_time_account_import
+msgid "Take Over from Odoo 19"
+msgstr "Übernahme aus Odoo 19"
+
+#. module: l10n_de_hr_attendance_time_account
+#: model:ir.model,name:l10n_de_hr_attendance_time_account.model_l10n_de_time_account_import
+msgid "Take Over the Overtime of Odoo 19"
+msgstr "Überstunden aus Odoo 19 übernehmen"
+
+#. module: l10n_de_hr_attendance_time_account
+#: model:ir.model.fields,field_description:l10n_de_hr_attendance_time_account.field_l10n_de_time_account_import__with_settings
+msgid "Take Over the Rules"
+msgstr "Regeln übernehmen"
+
+#. module: l10n_de_hr_attendance_time_account
+#: model:ir.model.fields.selection,name:l10n_de_hr_attendance_time_account.selection__l10n_de_time_account_line__kind__transfer
+msgid "Taken Over"
+msgstr "Übernahme"
+
+#. module: l10n_de_hr_attendance_time_account
+#: model:ir.model.fields,help:l10n_de_hr_attendance_time_account.field_l10n_de_time_account_line__confirmed
+msgid "The days without attendance are minus hours indeed."
+msgstr "Die Tage ohne Anwesenheit sind tatsächlich Minusstunden."
+
+#. module: l10n_de_hr_attendance_time_account
+#. odoo-python
+#: code:addons/l10n_de_hr_attendance_time_account/models/hr_employee.py:0
+msgid ""
+"The employee leaves on %(date)s with a balance of %(hours).2f hours. § 2 (2)"
+" MiLoG: compensate it in the calendar month after the end of the employment "
+"at the latest."
+msgstr "Der Mitarbeiter scheidet am %(date)s mit einem Saldo von %(hours).2f Stunden aus. § 2 Abs. 2 MiLoG: spätestens im Kalendermonat nach dem Ende der Beschäftigung ausgleichen."
+
+#. module: l10n_de_hr_attendance_time_account
+#: model:ir.model.fields,help:l10n_de_hr_attendance_time_account.field_l10n_de_time_account_line__origin_line_id
+msgid "The entry this one reverses, or the closed period it corrects."
+msgstr "Die Buchung, die hiermit storniert wird, oder der abgeschlossene Zeitraum, der hiermit korrigiert wird."
+
+#. module: l10n_de_hr_attendance_time_account
+#. odoo-python
+#: code:addons/l10n_de_hr_attendance_time_account/wizard/time_account_print.py:0
+msgid "The period ends before it starts."
+msgstr "Der Zeitraum endet, bevor er beginnt."
+
+#. module: l10n_de_hr_attendance_time_account
+#: model:ir.model.constraint,message:l10n_de_hr_attendance_time_account.constraint_hr_version_time_account_tolerances_positive
+#: model:ir.model.constraint,message:l10n_de_hr_attendance_time_account.constraint_res_company_time_account_tolerances_positive
+msgid "The tolerances of the working time account cannot be negative."
+msgstr "Die Toleranzen des Arbeitszeitkontos dürfen nicht negativ sein."
+
+#. module: l10n_de_hr_attendance_time_account
+#. odoo-python
+#: code:addons/l10n_de_hr_attendance_time_account/wizard/time_account_close.py:0
+msgid "The working time accounts are already closed until then."
+msgstr "Die Arbeitszeitkonten sind bis dahin schon abgeschlossen."
+
+#. module: l10n_de_hr_attendance_time_account
+#. odoo-python
+#: code:addons/l10n_de_hr_attendance_time_account/models/time_account_line.py:0
+msgid ""
+"The working time accounts are closed until %(date)s. Book the change in an "
+"open period."
+msgstr "Die Arbeitszeitkonten sind bis %(date)s abgeschlossen. Buchen Sie die Änderung in einem offenen Zeitraum."
+
+#. module: l10n_de_hr_attendance_time_account
+#. odoo-python
+#: code:addons/l10n_de_hr_attendance_time_account/wizard/time_account_import.py:0
+msgid "This database has no overtime of Odoo 19: the table %s does not exist."
+msgstr "Diese Datenbank hat keine Überstunden aus Odoo 19: Die Tabelle %s gibt es nicht."
+
+#. module: l10n_de_hr_attendance_time_account
+#. odoo-python
+#: code:addons/l10n_de_hr_attendance_time_account/models/time_account_line.py:0
+msgid "This entry is a reversal or has been reversed already."
+msgstr "Diese Buchung ist ein Storno oder wurde schon storniert."
+
+#. module: l10n_de_hr_attendance_time_account
+#: model:ir.model.constraint,message:l10n_de_hr_attendance_time_account.constraint_l10n_de_time_account_line_legacy_ref_uniq
+msgid "This entry of the previous system has already been taken over."
+msgstr "Diese Buchung des Vorsystems wurde schon übernommen."
+
+#. module: l10n_de_hr_attendance_time_account
+#. odoo-python
+#: code:addons/l10n_de_hr_attendance_time_account/wizard/time_account_import.py:0
+msgid ""
+"This is not a Sunday. Accounts compared per week would start in the middle "
+"of a week that Odoo 19 has booked in part."
+msgstr "Das ist kein Sonntag. Konten je Woche würden mitten in einer Woche beginnen, die Odoo 19 schon zum Teil gebucht hat."
+
+#. module: l10n_de_hr_attendance_time_account
+#: model_terms:ir.ui.view,arch_db:l10n_de_hr_attendance_time_account.time_account_line_view_form
+msgid "This period is closed."
+msgstr "Dieser Zeitraum ist abgeschlossen."
+
+#. module: l10n_de_hr_attendance_time_account
+#: model:ir.model.fields,field_description:l10n_de_hr_attendance_time_account.field_hr_employee__time_account_line_ids
+msgid "Time Account Line"
+msgstr "Buchung des Arbeitszeitkontos"
+
+#. module: l10n_de_hr_attendance_time_account
+#: model:ir.model,name:l10n_de_hr_attendance_time_account.model_hr_work_entry_type
+msgid "Time Type"
+msgstr "Zeitart"
+
+#. module: l10n_de_hr_attendance_time_account
+#: model:ir.model.fields,help:l10n_de_hr_attendance_time_account.field_hr_work_entry_type__time_account_deduct
+msgid ""
+"Time off of this type is compensation for plus hours: the expected hours of "
+"the day stay as they are, so the day is booked as minus on the working time "
+"account. Leave it off for vacation, sickness and other time off that counts "
+"as worked."
+msgstr "Abwesenheiten dieser Art sind Ausgleich für Plusstunden: Das Soll des Tages bleibt stehen, der Tag wird also als Minus auf dem Arbeitszeitkonto gebucht. Für Urlaub, Krankheit und andere Abwesenheiten, die als geleistet gelten, ausgeschaltet lassen."
+
+#. module: l10n_de_hr_attendance_time_account
+#: model_terms:ir.ui.view,arch_db:l10n_de_hr_attendance_time_account.report_timesheet
+msgid "Time off, public holiday"
+msgstr "Abwesenheit, Feiertag"
+
+#. module: l10n_de_hr_attendance_time_account
+#: model:ir.model.fields.selection,name:l10n_de_hr_attendance_time_account.selection__l10n_de_time_account_line__state__to_clarify
+#: model_terms:ir.ui.view,arch_db:l10n_de_hr_attendance_time_account.time_account_line_view_search
+msgid "To Clarify"
+msgstr "Zu klären"
+
+#. module: l10n_de_hr_attendance_time_account
+#: model_terms:ir.ui.view,arch_db:l10n_de_hr_attendance_time_account.report_statement
+msgid "To clarify:"
+msgstr "Zu klären:"
+
+#. module: l10n_de_hr_attendance_time_account
+#: model:ir.model.fields,help:l10n_de_hr_attendance_time_account.field_l10n_de_time_account_line__state
+msgid ""
+"To clarify: the period has scheduled days without attendance and without "
+"time off. Nothing is booked until the time off is entered or the minus hours"
+" are confirmed."
+msgstr "Zu klären: Der Zeitraum hat geplante Tage ohne Anwesenheit und ohne Abwesenheit. Gebucht wird erst, wenn die Abwesenheit eingetragen oder das Minus bestätigt ist."
+
+#. module: l10n_de_hr_attendance_time_account
+#: model_terms:ir.ui.view,arch_db:l10n_de_hr_attendance_time_account.res_config_settings_view_form
+msgid "Tolerance"
+msgstr "Toleranz"
+
+#. module: l10n_de_hr_attendance_time_account
+#: model:ir.model.fields,field_description:l10n_de_hr_attendance_time_account.field_hr_employee__time_account_tolerance_minus
+#: model:ir.model.fields,field_description:l10n_de_hr_attendance_time_account.field_hr_version__time_account_tolerance_minus
+#: model:ir.model.fields,field_description:l10n_de_hr_attendance_time_account.field_res_company__time_account_tolerance_minus
+#: model:ir.model.fields,field_description:l10n_de_hr_attendance_time_account.field_res_config_settings__time_account_tolerance_minus
+msgid "Tolerance for Minus Hours"
+msgstr "Toleranz für Minusstunden"
+
+#. module: l10n_de_hr_attendance_time_account
+#: model:ir.model.fields,field_description:l10n_de_hr_attendance_time_account.field_hr_employee__time_account_tolerance_plus
+#: model:ir.model.fields,field_description:l10n_de_hr_attendance_time_account.field_hr_version__time_account_tolerance_plus
+#: model:ir.model.fields,field_description:l10n_de_hr_attendance_time_account.field_res_company__time_account_tolerance_plus
+#: model:ir.model.fields,field_description:l10n_de_hr_attendance_time_account.field_res_config_settings__time_account_tolerance_plus
+msgid "Tolerance for Plus Hours"
+msgstr "Toleranz für Plusstunden"
+
+#. module: l10n_de_hr_attendance_time_account
+#: model:ir.model.fields.selection,name:l10n_de_hr_attendance_time_account.selection__l10n_de_time_account_line__period__week
+msgid "Week"
+msgstr "Woche"
+
+#. module: l10n_de_hr_attendance_time_account
+#: model:ir.model.fields,help:l10n_de_hr_attendance_time_account.field_l10n_de_time_account_line__hours
+msgid ""
+"What the entry adds to the account. Negative for minus hours, payouts and "
+"forfeitures."
+msgstr "Was die Buchung dem Konto hinzufügt. Negativ bei Minusstunden, Auszahlung und Verfall."
+
+#. module: l10n_de_hr_attendance_time_account
+#: model_terms:ir.ui.view,arch_db:l10n_de_hr_attendance_time_account.time_account_line_view_search
+msgid "With Hours"
+msgstr "Mit Stunden"
+
+#. module: l10n_de_hr_attendance_time_account
+#: model_terms:ir.ui.view,arch_db:l10n_de_hr_attendance_time_account.report_statement
+msgid "Worked"
+msgstr "Ist"
+
+#. module: l10n_de_hr_attendance_time_account
+#: model:ir.model.fields,field_description:l10n_de_hr_attendance_time_account.field_l10n_de_time_account_line__worked_hours
+msgid "Worked Hours"
+msgstr "Iststunden"
+
+#. module: l10n_de_hr_attendance_time_account
+#: model:ir.model.fields,help:l10n_de_hr_attendance_time_account.field_l10n_de_time_account_line__deviation_hours
+msgid "Worked minus expected hours of the period, before tolerance."
+msgstr "Ist minus Soll des Zeitraums, vor der Toleranz."
+
+#. module: l10n_de_hr_attendance_time_account
+#: model:ir.actions.act_window,name:l10n_de_hr_attendance_time_account.time_account_line_action
+#: model:ir.model.fields,field_description:l10n_de_hr_attendance_time_account.field_hr_employee__time_account_period
+#: model:ir.model.fields,field_description:l10n_de_hr_attendance_time_account.field_hr_version__time_account_period
+#: model:ir.model.fields,field_description:l10n_de_hr_attendance_time_account.field_res_company__time_account_period
+#: model:ir.model.fields,field_description:l10n_de_hr_attendance_time_account.field_res_config_settings__time_account_period
+#: model:ir.ui.menu,name:l10n_de_hr_attendance_time_account.menu_time_account
+#: model:mail.activity.type,name:l10n_de_hr_attendance_time_account.mail_activity_type_time_account
+#: model_terms:ir.ui.view,arch_db:l10n_de_hr_attendance_time_account.report_statement
+#: model_terms:ir.ui.view,arch_db:l10n_de_hr_attendance_time_account.res_config_settings_view_form
+msgid "Working Time Account"
+msgstr "Arbeitszeitkonto"
+
+#. module: l10n_de_hr_attendance_time_account
+#: model_terms:ir.ui.view,arch_db:l10n_de_hr_attendance_time_account.res_config_settings_view_form
+msgid "Working Time Account (Germany)"
+msgstr "Arbeitszeitkonto (Deutschland)"
+
+#. module: l10n_de_hr_attendance_time_account
+#: model:ir.model,name:l10n_de_hr_attendance_time_account.model_l10n_de_time_account_line
+msgid "Working Time Account Entry"
+msgstr "Buchung des Arbeitszeitkontos"
+
+#. module: l10n_de_hr_attendance_time_account
+#: model:ir.model,name:l10n_de_hr_attendance_time_account.model_l10n_de_time_account_report_mixin
+msgid "Working Time Account Report Helpers"
+msgstr "Hilfen für Berichte zum Arbeitszeitkonto"
+
+#. module: l10n_de_hr_attendance_time_account
+#: model:ir.model.fields,field_description:l10n_de_hr_attendance_time_account.field_hr_employee__time_account_start
+msgid "Working Time Account Since"
+msgstr "Arbeitszeitkonto seit"
+
+#. module: l10n_de_hr_attendance_time_account
+#: model:ir.actions.report,name:l10n_de_hr_attendance_time_account.action_report_statement
+#: model:ir.model,name:l10n_de_hr_attendance_time_account.model_report_l10n_de_hr_attendance_time_account_report_statement
+msgid "Working Time Account Statement"
+msgstr "Kontoauszug Arbeitszeitkonto"
+
+#. module: l10n_de_hr_attendance_time_account
+#: model:ir.model.fields,field_description:l10n_de_hr_attendance_time_account.field_hr_employee__time_account_warning
+msgid "Working Time Account Warnings"
+msgstr "Hinweise zum Arbeitszeitkonto"
+
+#. module: l10n_de_hr_attendance_time_account
+#: model:ir.actions.act_window,name:l10n_de_hr_attendance_time_account.time_account_print_action_employee
+msgid "Working Time Account: Print"
+msgstr "Arbeitszeitkonto: Drucken"
+
+#. module: l10n_de_hr_attendance_time_account
+#: model:ir.actions.server,name:l10n_de_hr_attendance_time_account.ir_cron_time_account_ir_actions_server
+msgid "Working Time Account: book finished periods"
+msgstr "Arbeitszeitkonto: abgelaufene Zeiträume buchen"
+
+#. module: l10n_de_hr_attendance_time_account
+#: model:ir.actions.act_window,name:l10n_de_hr_attendance_time_account.hr_employee_action_time_account
+msgid "Working Time Accounts"
+msgstr "Arbeitszeitkonten"
+
+#. module: l10n_de_hr_attendance_time_account
+#: model:ir.model.fields,field_description:l10n_de_hr_attendance_time_account.field_res_company__time_account_lock_date
+#: model:ir.model.fields,field_description:l10n_de_hr_attendance_time_account.field_res_config_settings__time_account_lock_date
+msgid "Working Time Accounts Closed Until"
+msgstr "Arbeitszeitkonten abgeschlossen bis"
+
+#. module: l10n_de_hr_attendance_time_account
+#: model:ir.model.fields,field_description:l10n_de_hr_attendance_time_account.field_hr_employee__time_account_balance
+msgid "Working Time Balance"
+msgstr "Saldo Arbeitszeitkonto"
+
+#. module: l10n_de_hr_attendance_time_account
+#. odoo-python
+#: code:addons/l10n_de_hr_attendance_time_account/models/time_account_line.py:0
+#: model_terms:ir.ui.view,arch_db:l10n_de_hr_attendance_time_account.view_employee_form
+msgid "Working time account"
+msgstr "Arbeitszeitkonto"
+
+#. module: l10n_de_hr_attendance_time_account
+#. odoo-python
+#: code:addons/l10n_de_hr_attendance_time_account/wizard/time_account_import.py:0
+msgid "computed"
+msgstr "berechnet"
+
+#. module: l10n_de_hr_attendance_time_account
+#: model_terms:ir.ui.view,arch_db:l10n_de_hr_attendance_time_account.report_statement
+msgid "day(s) without attendance"
+msgstr "Tag(e) ohne Anwesenheit"
+
+#. module: l10n_de_hr_attendance_time_account
+#. odoo-python
+#: code:addons/l10n_de_hr_attendance_time_account/models/hr_employee.py:0
+msgid ""
+"§ 2 (2) MiLoG: %(hours).2f plus hours from %(month)s must be compensated by "
+"%(date)s."
+msgstr "§ 2 Abs. 2 MiLoG: %(hours).2f Plusstunden aus %(month)s müssen bis %(date)s ausgeglichen werden."
+
+#. module: l10n_de_hr_attendance_time_account
+#. odoo-python
+#: code:addons/l10n_de_hr_attendance_time_account/models/hr_employee.py:0
+msgid ""
+"§ 2 (2) MiLoG: %(month)s added %(hours).2f plus hours, more than half of the"
+" agreed %(agreed).2f hours."
+msgstr "§ 2 Abs. 2 MiLoG: %(month)s brachte %(hours).2f Plusstunden, mehr als die Hälfte der vereinbarten %(agreed).2f Stunden."
+
+#. module: l10n_de_hr_attendance_time_account
+#: model:ir.model.fields,help:l10n_de_hr_attendance_time_account.field_hr_employee__time_account_due_date
+msgid ""
+"§ 2 (2) MiLoG: the oldest plus hours must be compensated by paid time off or"
+" payment by this date."
+msgstr "§ 2 Abs. 2 MiLoG: Die ältesten Plusstunden müssen bis zu diesem Datum durch bezahlte Freizeit oder Zahlung ausgeglichen sein."

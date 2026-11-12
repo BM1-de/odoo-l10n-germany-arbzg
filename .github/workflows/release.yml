@@ -1,6 +1,6 @@
 name: release
 
-# spec 9.9 and R-51 (§ 87c (3) AO): every release tag 19.0.x.y.z gets the
+# spec 9.9 and R-51 (§ 87c (3) AO): every release tag 20.0.x.y.z gets the
 # complete test protocol (JUnit XML and coverage of lines and branches) as an
 # asset of its GitHub release. Action artifacts alone are not enough (kept 90
 # days at most); the protocol is archived by BM1 for five years as well
@@ -14,7 +14,7 @@ name: release
 on:
   push:
     tags:
-      - "19.0.*"
+      - "20.0.*"
   workflow_dispatch:
     inputs:
       tag:
@@ -27,11 +27,11 @@ permissions:
 jobs:
   test-protocol:
     runs-on: ubuntu-22.04
-    container: ghcr.io/oca/oca-ci/py3.10-odoo19.0:latest
+    container: ghcr.io/oca/oca-ci/py3.12-odoo20.0:latest
     name: test protocol of the release
     services:
       postgres:
-        image: postgres:13
+        image: postgres:16
         env:
           POSTGRES_USER: odoo
           POSTGRES_PASSWORD: odoo
@@ -39,7 +39,7 @@ jobs:
         ports:
           - 5432:5432
     env:
-      IMAGE: ghcr.io/oca/oca-ci/py3.10-odoo19.0:latest
+      IMAGE: ghcr.io/oca/oca-ci/py3.12-odoo20.0:latest
       TAG: ${{ inputs.tag || github.ref_name }}
       # the same version as in _dev/werkzeuge/test_protocol.sh
       COVERAGE_VERSION: "7.16.2"

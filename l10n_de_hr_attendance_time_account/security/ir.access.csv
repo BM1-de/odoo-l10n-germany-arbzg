@@ -1,0 +1,9 @@
+id,name,model_id,group_id/id,operation,domain
+time_account_line_manager,Working time account: administrators book entries for all employees,l10n_de.time.account.line,hr_attendance.group_hr_attendance_manager,cru,
+time_account_line_user,Working time account: officers of all attendances read all entries,l10n_de.time.account.line,hr_attendance.group_hr_attendance_user,r,
+time_account_line_officer,Working time account: officers read the entries of their employees,l10n_de.time.account.line,hr_attendance.group_hr_attendance_officer,r,"[('employee_id.attendance_manager_id', '=', user.id)]"
+time_account_line_own,Working time account: employees read their own entries,l10n_de.time.account.line,base.group_user,r,"[('employee_id.user_id', '=', user.id)]"
+time_account_line_company,Working time account: entries of the own companies,l10n_de.time.account.line,,crud,"['|', ('company_id', '=', False), ('company_id', 'in', company_ids)]"
+time_account_print_officer,Working time account: print statements,l10n_de.time.account.print,hr_attendance.group_hr_attendance_officer,crud,
+time_account_close_manager,Working time account: close periods,l10n_de.time.account.close,hr_attendance.group_hr_attendance_manager,crud,
+time_account_import_manager,Working time account: take over from Odoo 19,l10n_de.time.account.import,hr_attendance.group_hr_attendance_manager,crud,

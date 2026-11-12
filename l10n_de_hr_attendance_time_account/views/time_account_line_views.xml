@@ -1,0 +1,247 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!-- Copyright 2026 Baumgärtner Marketing GmbH
+     License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl). -->
+<odoo>
+    <record id="time_account_line_view_list" model="ir.ui.view">
+        <field name="name">l10n_de.time.account.line.list</field>
+        <field name="model">l10n_de.time.account.line</field>
+        <field name="arch" type="xml">
+            <list
+                decoration-warning="state == 'to_clarify'"
+                decoration-muted="locked"
+                create="0"
+            >
+                <header>
+                    <button
+                        name="action_confirm_minus"
+                        type="object"
+                        string="Confirm Minus Hours"
+                        groups="hr_attendance.group_hr_attendance_manager"
+                    />
+                    <button
+                        name="action_reverse"
+                        type="object"
+                        string="Reverse"
+                        groups="hr_attendance.group_hr_attendance_manager"
+                    />
+                </header>
+                <field name="employee_id" widget="many2one_avatar_employee" />
+                <field name="date_from" optional="show" />
+                <field name="date" />
+                <field name="kind" />
+                <field name="period" optional="hide" />
+                <field name="name" optional="show" />
+                <field name="expected_hours" widget="float_time" optional="show" />
+                <field name="worked_hours" widget="float_time" optional="show" />
+                <field name="deviation_hours" widget="float_time" optional="show" />
+                <field name="hours" widget="float_time" sum="Balance" />
+                <field name="state" widget="badge" optional="show" />
+                <field name="unexplained_days" optional="hide" />
+                <field name="neutral_reason" optional="hide" />
+                <field name="locked" optional="hide" />
+                <field
+                    name="company_id"
+                    groups="base.group_multi_company"
+                    optional="hide"
+                />
+            </list>
+        </field>
+    </record>
+
+    <record id="time_account_line_view_form" model="ir.ui.view">
+        <field name="name">l10n_de.time.account.line.form</field>
+        <field name="model">l10n_de.time.account.line</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button
+                        name="action_confirm_minus"
+                        type="object"
+                        string="Confirm Minus Hours"
+                        class="btn-primary"
+                        invisible="state != 'to_clarify' or locked"
+                        groups="hr_attendance.group_hr_attendance_manager"
+                    />
+                    <button
+                        name="action_reverse"
+                        type="object"
+                        string="Reverse"
+                        invisible="not id or kind in ('deviation', 'transfer') or origin_line_id or reversal_ids"
+                        groups="hr_attendance.group_hr_attendance_manager"
+                    />
+                    <field name="state" widget="statusbar" />
+                </header>
+                <sheet>
+                    <field name="locked" invisible="1" />
+                    <field name="reversal_ids" invisible="1" />
+                    <div
+                        class="alert alert-info"
+                        role="status"
+                        invisible="not locked"
+                    >This period is closed.</div>
+                    <group>
+                        <group>
+                            <field name="employee_id" readonly="id" />
+                            <field name="kind" readonly="id" />
+                            <field name="date" readonly="id" />
+                            <field name="date_from" invisible="kind != 'deviation'" />
+                            <field name="period" invisible="kind != 'deviation'" />
+                        </group>
+                        <group>
+                            <field name="hours" widget="float_time" readonly="id" />
+                            <field
+                                name="expected_hours"
+                                widget="float_time"
+                                invisible="kind != 'deviation'"
+                            />
+                            <field
+                                name="worked_hours"
+                                widget="float_time"
+                                invisible="kind != 'deviation'"
+                            />
+                            <field
+                                name="deviation_hours"
+                                widget="float_time"
+                                invisible="kind != 'deviation'"
+                            />
+                            <field
+                                name="unexplained_days"
+                                invisible="not unexplained_days"
+                            />
+                        </group>
+                    </group>
+                    <group>
+                        <field
+                            name="name"
+                            required="kind not in ('deviation', 'transfer')"
+                            readonly="locked or kind in ('deviation', 'transfer')"
+                        />
+                        <field
+                            name="neutral_reason"
+                            invisible="kind != 'deviation'"
+                            readonly="locked"
+                        />
+                        <field
+                            name="confirmed"
+                            invisible="kind != 'deviation' or not unexplained_days"
+                            readonly="locked"
+                        />
+                        <field name="origin_line_id" invisible="not origin_line_id" />
+                        <field
+                            name="correction_hours"
+                            widget="float_time"
+                            invisible="not correction_hours"
+                        />
+                        <field name="legacy_ref" invisible="not legacy_ref" />
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="time_account_line_view_search" model="ir.ui.view">
+        <field name="name">l10n_de.time.account.line.search</field>
+        <field name="model">l10n_de.time.account.line</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="employee_id" />
+                <field name="name" />
+                <filter
+                    name="to_clarify"
+                    string="To Clarify"
+                    domain="[('state', '=', 'to_clarify')]"
+                />
+                <filter
+                    name="manual"
+                    string="Booked by Hand"
+                    domain="[('kind', 'not in', ('deviation', 'transfer'))]"
+                />
+                <filter
+                    name="not_zero"
+                    string="With Hours"
+                    domain="[('hours', '!=', 0)]"
+                />
+                <separator />
+                <filter name="date" string="Date" date="date" />
+                <group>
+                    <filter
+                        name="group_employee"
+                        string="Employee"
+                        context="{'group_by': 'employee_id'}"
+                    />
+                    <filter
+                        name="group_month"
+                        string="Month"
+                        context="{'group_by': 'date:month'}"
+                    />
+                    <filter
+                        name="group_kind"
+                        string="Kind"
+                        context="{'group_by': 'kind'}"
+                    />
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record id="time_account_line_action" model="ir.actions.act_window">
+        <field name="name">Working Time Account</field>
+        <field name="res_model">l10n_de.time.account.line</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+    <record id="time_account_line_action_all" model="ir.actions.act_window">
+        <field name="name">Entries</field>
+        <field name="res_model">l10n_de.time.account.line</field>
+        <field name="view_mode">list,form</field>
+        <field name="context">{'search_default_group_employee': 1}</field>
+    </record>
+
+    <record id="time_account_line_action_my" model="ir.actions.act_window">
+        <field name="name">My Working Time Account</field>
+        <field name="res_model">l10n_de.time.account.line</field>
+        <field name="view_mode">list,form</field>
+        <field name="domain">[('employee_id.user_id', '=', uid)]</field>
+        <field name="context">{'search_default_not_zero': 1}</field>
+    </record>
+
+    <record id="time_account_line_view_form_book" model="ir.ui.view">
+        <field name="name">l10n_de.time.account.line.form.book</field>
+        <field name="model">l10n_de.time.account.line</field>
+        <field name="priority" eval="50" />
+        <field name="arch" type="xml">
+            <form>
+                <group>
+                    <group>
+                        <field name="employee_id" />
+                        <field name="date" />
+                    </group>
+                    <group>
+                        <field name="kind" />
+                        <field name="hours" widget="float_time" />
+                    </group>
+                </group>
+                <group>
+                    <field name="name" required="1" />
+                </group>
+                <p class="text-muted">
+                    Opening balance, correction, payout or forfeiture. Enter payouts
+                    and forfeitures with negative hours. Deviations are computed, not
+                    booked by hand.
+                </p>
+                <footer>
+                    <button special="save" string="Book" class="btn-primary" />
+                    <button special="cancel" string="Discard" />
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="time_account_line_action_book" model="ir.actions.act_window">
+        <field name="name">Book by Hand</field>
+        <field name="res_model">l10n_de.time.account.line</field>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="time_account_line_view_form_book" />
+        <field name="target">new</field>
+    </record>
+</odoo>

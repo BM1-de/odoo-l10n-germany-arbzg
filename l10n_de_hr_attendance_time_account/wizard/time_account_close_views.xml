@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!-- Copyright 2026 Baumgärtner Marketing GmbH
+     License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl). -->
+<odoo>
+    <record id="time_account_close_view_form" model="ir.ui.view">
+        <field name="name">l10n_de.time.account.close.form</field>
+        <field name="model">l10n_de.time.account.close</field>
+        <field name="arch" type="xml">
+            <form>
+                <group>
+                    <field name="company_id" groups="base.group_multi_company" />
+                    <field name="lock_date" />
+                    <field name="date" />
+                </group>
+                <p class="text-muted">
+                    Closed periods are not computed again. When attendances or time
+                    off of a closed period change later, book the difference as a
+                    correction with the button below.
+                </p>
+                <field name="to_clarify_ids" invisible="not to_clarify_ids">
+                    <list>
+                        <field name="employee_id" />
+                        <field name="date_from" />
+                        <field name="date" />
+                        <field name="deviation_hours" widget="float_time" />
+                        <field name="unexplained_days" />
+                    </list>
+                </field>
+                <footer>
+                    <button
+                        name="action_close"
+                        type="object"
+                        string="Close"
+                        class="btn-primary"
+                    />
+                    <button name="action_update" type="object" string="Compute Now" />
+                    <button
+                        name="action_correct_closed"
+                        type="object"
+                        string="Correct Closed Periods"
+                    />
+                    <button special="cancel" string="Discard" />
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="time_account_close_action" model="ir.actions.act_window">
+        <field name="name">Close Month</field>
+        <field name="res_model">l10n_de.time.account.close</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+</odoo>

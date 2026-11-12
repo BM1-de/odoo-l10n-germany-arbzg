@@ -12,7 +12,7 @@ services:
       - db-data:/var/lib/postgresql/data
 
   odoo:
-    image: odoo:19.0
+    image: odoo:20.0
     depends_on:
       - db
     ports:
