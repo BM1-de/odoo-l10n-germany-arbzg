@@ -5,7 +5,7 @@
     <record id="mail_activity_type_time_account" model="mail.activity.type">
         <field name="name">Working Time Account</field>
         <field name="summary">Check the working time account</field>
-        <field name="icon">fa-balance-scale</field>
+        <field name="icon">balance</field>
         <field name="res_model">hr.employee</field>
         <field name="delay_count">0</field>
     </record>
