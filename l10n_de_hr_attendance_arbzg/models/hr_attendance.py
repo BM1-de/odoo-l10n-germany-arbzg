@@ -8,9 +8,9 @@ employee is checked again:
 - **Breaks (§ 4 ArbZG):** more than 6 hours of work need 30 minutes of break,
   more than 9 hours 45 minutes (both limits per company). Breaks are gaps of
   at least 15 minutes between two attendances, breaks inserted before and the
-  breaks of the working schedule that Odoo deducts from the worked hours. A
-  break is only required for the time above a limit: 6:10 hours of work need
-  10 minutes. A missing break is put into the middle of the longest
+  break duration recorded on an attendance, which Odoo deducts from the worked
+  hours. A break is only required for the time above a limit: 6:10 hours of
+  work need 10 minutes. A missing break is put into the middle of the longest
   attendance, or only pointed out (per company).
 - **Maximum (§ 3 ArbZG):** more than 10 hours of work a day are not
   shortened, because the attendances must show the real time (§ 16 (2)
@@ -18,16 +18,36 @@ employee is checked again:
   once per day.
 - **Forgotten check-out:** a scheduled action checks out open attendances as
   soon as the maximum is reached, plus the break that is still missing.
+
+Work are the attendances that are not refused and whose time type counts as
+working time; the lines that the time rules of Odoo add for missing time are
+no work.
+
+**Time rules of Odoo:** they cut the time above the schedule off an attendance
+as a line of its own. The day is checked before they evaluate it
+(``_trigger_time_rules``), so they see the day with its legal break, and the
+writes of the check never start them: a split is two writes, and the rules
+must not see the day in between.
 """
 
-from datetime import timedelta
+from datetime import UTC, timedelta
+from zoneinfo import ZoneInfo
 
 from markupsafe import Markup
-from pytz import timezone, utc
 
 from odoo import api, fields, models
-from odoo.tools.date_utils import sum_intervals
-from odoo.tools.intervals import Intervals
+
+#: a change of these fields changes the work or the breaks of a day
+CHECKED_FIELDS = frozenset(
+    {
+        "check_in",
+        "check_out",
+        "employee_id",
+        "break_duration",
+        "work_entry_type_id",
+        "state",
+    }
+)
 
 
 def _hours(delta):
@@ -65,18 +85,49 @@ class HrAttendance(models.Model):
         return attendances
 
     def write(self, vals):
+        # Odoo 19 sets out_mode from technical to manual itself when check_out
+        # is written, in_mode only when check_in is written (since 18.11.2026,
+        # not yet in Odoo 20): remember the technical entries before, see
+        # _arbzg_fix_technical
+        technical = self.browse()
+        if {"check_in", "check_out"} & set(vals):
+            technical = self.filtered(
+                lambda attendance: attendance.in_mode == "technical"
+                and attendance.out_mode == "technical"
+            )
         result = super().write(vals)
-        if {"check_in", "check_out", "employee_id"} & set(vals):
+        technical.filtered(
+            lambda attendance: attendance.check_out
+            and attendance.employee_id._arbzg_applies()
+        )._arbzg_fix_technical(entirely=True)
+        if CHECKED_FIELDS & set(vals):
             self._arbzg_check()
         return result
+
+    def _trigger_time_rules(self):
+        """Check the day before the time rules of Odoo evaluate it.
+
+        They must count the day with its legal break: a break inserted after
+        them would leave overtime lines that are longer than the work was.
+        Attendances that wait for their approval are no source of the rules yet
+        and are checked after the write as usual.
+        """
+        self.filtered(lambda attendance: attendance.state == "validated")._arbzg_check()
+        return super()._trigger_time_rules()
 
     # ------------------------------------------------------------------
     # check of a day
     # ------------------------------------------------------------------
 
     def _arbzg_check(self):
-        """Check the days of these attendances against the Working Time Act."""
-        if self.env.context.get("arbzg_skip"):
+        """Check the days of these attendances against the Working Time Act.
+
+        Not for the writes of the time rules of Odoo, of a refusal and of the
+        automatic check-out of Odoo (``skip_time_rules``): they are steps in
+        between, the day is checked before or after them.
+        """
+        context = self.env.context
+        if context.get("arbzg_skip") or context.get("skip_time_rules"):
             return
         days = {
             (attendance.employee_id, attendance.date)
@@ -87,15 +138,27 @@ class HrAttendance(models.Model):
             self._arbzg_check_day(employee, day)
 
     @api.model
+    def _arbzg_work_domain(self, employee, day):
+        """The attendances of a day that are work: not refused, of a time type
+        that counts as working time, and no line for missing time."""
+        return [
+            ("employee_id", "=", employee.id),
+            ("date", "=", day),
+            ("state", "!=", "refused"),
+            ("work_entry_type_id.count_as", "=", "working_time"),
+            "|",
+            ("time_rule_id", "=", False),
+            ("time_rule_id.threshold_operator", "=", "exceed"),
+        ]
+
+    @api.model
     def _arbzg_check_day(self, employee, day):
         company = employee.company_id
+        # the own writes start neither this check nor the time rules of Odoo
         attendances = (
             self.sudo()
-            .with_context(arbzg_skip=True)
-            .search(
-                [("employee_id", "=", employee.id), ("date", "=", day)],
-                order="check_in",
-            )
+            .with_context(arbzg_skip=True, skip_time_rules=True)
+            .search(self._arbzg_work_domain(employee, day), order="check_in")
         )
         if not attendances or not all(attendances.mapped("check_out")):
             return
@@ -113,29 +176,37 @@ class HrAttendance(models.Model):
             minutes = 0
         attendances._arbzg_set_missing_break(minutes)
 
-    def _arbzg_fix_technical(self):
+    def _arbzg_fix_technical(self, entirely=False):
         """Odoo's absence management creates technical entries of one second.
 
         Once someone corrects such an entry to real times, it is a normal entry;
-        otherwise it would stay red and count as technical.
+        otherwise it would stay red and count as technical. The part split off
+        by an inserted break has only ``in_mode`` technical and keeps it.
+
+        ``entirely``: these attendances were technical on both sides before
+        their times were changed. Odoo may then have set ``out_mode`` to manual
+        itself already, but leaves ``in_mode`` technical if only ``check_out``
+        changed.
         """
         for attendance in self:
-            if (
-                attendance.out_mode == "technical"
-                and _hours(attendance.check_out - attendance.check_in) > 1 / 60.0
-            ):
-                vals = {"out_mode": "manual"}
-                if attendance.in_mode == "technical":
-                    vals["in_mode"] = "manual"
-                attendance.write(vals)
+            if (entirely or attendance.out_mode == "technical") and _hours(
+                attendance.check_out - attendance.check_in
+            ) > 1 / 60.0:
+                attendance.write(
+                    {
+                        field: "manual"
+                        for field in ("in_mode", "out_mode")
+                        if attendance[field] == "technical"
+                    }
+                )
 
     def _arbzg_work_and_breaks(self):
         """Hours of work and of breaks of these attendances (sorted, one day).
 
         Breaks are the gaps between attendances from the shortest break on, the
         gap before a part split off by an inserted break (``in_mode``
-        technical), and the breaks of the working schedule that Odoo deducts
-        from the worked hours.
+        technical), and the break duration recorded on an attendance, which
+        Odoo deducts from the worked hours.
         """
         if not self:
             return 0.0, 0.0
@@ -144,11 +215,7 @@ class HrAttendance(models.Model):
         breaks = 0.0
         previous = False
         for attendance in self:
-            breaks += max(
-                _hours(attendance.check_out - attendance.check_in)
-                - attendance.worked_hours,
-                0.0,
-            )
+            breaks += attendance.break_duration
             if previous:
                 gap = _hours(attendance.check_in - previous.check_out)
                 if gap >= min_gap or attendance.in_mode == "technical":
@@ -159,7 +226,8 @@ class HrAttendance(models.Model):
     def _arbzg_insert_break(self, minutes):
         """Split the longest attendance of the day by a break of ``minutes``.
 
-        Returns False if the break does not fit into it.
+        The part split off keeps the time type, the status and the time rule
+        of the attendance. Returns False if the break does not fit into it.
         """
         target = max(self, key=lambda attendance: attendance.worked_hours)
         duration = timedelta(minutes=minutes)
@@ -178,10 +246,14 @@ class HrAttendance(models.Model):
                 "check_out": rest_end,
                 "in_mode": "technical",
                 "out_mode": rest_mode,
+                "work_entry_type_id": target.work_entry_type_id.id,
+                "state": target.state,
+                "time_rule_id": target.time_rule_id.id,
+                "source_attendance_id": target.source_attendance_id.id,
             }
         )
         employee = target.employee_id
-        tz = timezone(employee._get_tz() or "UTC")
+        tz = ZoneInfo(employee._get_tz() or "UTC")
         env = target._arbzg_employee_env()
         target.with_env(env).message_post(
             body=env._(
@@ -189,8 +261,8 @@ class HrAttendance(models.Model):
                 "(%(start)s–%(end)s), because no sufficient break was recorded on "
                 "this day.",
                 minutes=minutes,
-                start=utc.localize(start).astimezone(tz).strftime("%H:%M"),
-                end=utc.localize(end).astimezone(tz).strftime("%H:%M"),
+                start=start.replace(tzinfo=UTC).astimezone(tz).strftime("%H:%M"),
+                end=end.replace(tzinfo=UTC).astimezone(tz).strftime("%H:%M"),
             ),
             message_type="comment",
             subtype_xmlid="mail.mt_note",
@@ -199,8 +271,14 @@ class HrAttendance(models.Model):
         return True
 
     def _arbzg_set_missing_break(self, minutes):
-        """Show a break that was not inserted on the longest attendance."""
-        target = max(self, key=lambda attendance: attendance.worked_hours)
+        """Show a break that was not inserted on the longest attendance.
+
+        It stays on the attendance that shows it already: the time rules of
+        Odoo may cut the longest attendance, and the employee is told once.
+        """
+        target = self.filtered("arbzg_missing_break")[:1] or max(
+            self, key=lambda attendance: attendance.worked_hours
+        )
         (self - target).filtered("arbzg_missing_break").write(
             {"arbzg_missing_break": 0}
         )
@@ -305,7 +383,9 @@ class HrAttendance(models.Model):
     def _cron_arbzg_auto_check_out(self):
         """Check out open attendances that reached the maximum working time."""
         now = fields.Datetime.now()
-        for attendance in self.sudo().search([("check_out", "=", False)]):
+        for attendance in self.sudo().search(
+            [("check_out", "=", False), ("state", "!=", "refused")]
+        ):
             employee = attendance.employee_id
             if (
                 not employee._arbzg_applies()
@@ -338,15 +418,13 @@ class HrAttendance(models.Model):
         """Moment at which this open attendance reaches the daily maximum.
 
         The break that is still missing is added, because it is inserted when
-        checking out, and so are the breaks of the working schedule that Odoo
-        deducts in between.
+        checking out.
         """
         self.ensure_one()
         company = self.employee_id.company_id
         earlier = self.sudo().search(
             [
-                ("employee_id", "=", self.employee_id.id),
-                ("date", "=", self.date),
+                *self._arbzg_work_domain(self.employee_id, self.date),
                 ("check_out", "!=", False),
                 ("check_in", "<", self.check_in),
             ],
@@ -358,32 +436,5 @@ class HrAttendance(models.Model):
             if gap >= company.arbzg_min_break_minutes / 60.0:
                 breaks += gap
         rest = max(company.arbzg_max_hours - work, 0.0)
-        longest_break = company.arbzg_break_minutes_2 / 60.0
-        limit = self.check_in + timedelta(hours=rest)
-        # the breaks of the schedule depend on the limit and vice versa: three
-        # rounds are enough, a lunch break moves the limit at most once
-        for _step in range(3):
-            scheduled = self._arbzg_scheduled_breaks(self.check_in, limit)
-            missing = max(longest_break - breaks - scheduled, 0.0)
-            limit = self.check_in + timedelta(hours=rest + scheduled + missing)
-        return limit
-
-    def _arbzg_scheduled_breaks(self, start, end):
-        """Hours of the working schedule's breaks between ``start`` and ``end``.
-
-        The same breaks that Odoo deducts from the worked hours (lunch), see
-        ``hr.attendance._get_worked_hours_in_range``.
-        """
-        self.ensure_one()
-        resource = self.employee_id.resource_id
-        if end <= start or resource._is_flexible():
-            return 0.0
-        calendar = self._get_employee_calendar()
-        tz = timezone(resource.tz) if not calendar else timezone(calendar.tz)
-        start_tz = utc.localize(start).astimezone(tz)
-        end_tz = utc.localize(end).astimezone(tz)
-        lunch = self.employee_id._employee_attendance_intervals(
-            start_tz, end_tz, lunch=True
-        )
-        worked = sum_intervals(Intervals([(start_tz, end_tz, self)]) - lunch)
-        return max(_hours(end - start) - worked, 0.0)
+        missing = max(company.arbzg_break_minutes_2 / 60.0 - breaks, 0.0)
+        return self.check_in + timedelta(hours=rest + missing)

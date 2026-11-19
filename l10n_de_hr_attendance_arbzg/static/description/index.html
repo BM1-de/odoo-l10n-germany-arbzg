@@ -10,7 +10,7 @@
         <div class="oe_demo oe_picture oe_screenshot">
             <img
                 src="attendance.png"
-                alt="A missing break inserted into the middle of the longest attendance"
+                alt="A missing break inserted into the middle of the longest attendance (screen of Odoo 19)"
             />
         </div>
     </div>
@@ -24,8 +24,7 @@
                 <li>
                     <b>Breaks (&#167; 4 ArbZG):</b> more than 6 hours of work a day need 30
                     minutes of break, more than 9 hours 45 minutes. Gaps of at least 15
-                    minutes count, and so do the breaks of the working schedule that Odoo
-                    deducts.
+                    minutes count, and so does the break duration recorded on an attendance.
                 </li>
                 <li>
                     Only the time above a limit needs a break: 6:10 hours of work need 10
@@ -50,8 +49,10 @@
                     reached the maximum of the day are checked out.
                 </li>
                 <li>
-                    Every correction checks the whole day again. Contractors, freelancers
-                    and exempt employees such as managing directors are not checked.
+                    Every correction checks the whole day again, before the time rules of
+                    Odoo count the time above the schedule. Exempt employees such as
+                    managing directors and exempt employee types such as freelancers are
+                    not checked.
                 </li>
             </ul>
         </div>
@@ -65,7 +66,7 @@
             The attendances of a week, with the inserted breaks as gaps
         </h3>
         <div class="oe_demo oe_picture oe_screenshot">
-            <img src="attendances.png" alt="The attendances of a week" />
+            <img src="attendances.png" alt="The attendances of a week (screen of Odoo 19)" />
         </div>
     </div>
 </section>
@@ -77,7 +78,7 @@
             In the attendance settings, in case the law changes
         </h3>
         <div class="oe_demo oe_picture oe_screenshot">
-            <img src="settings.png" alt="The settings of the Working Time Act" />
+            <img src="settings.png" alt="The settings of the Working Time Act (screen of Odoo 19)" />
         </div>
     </div>
 </section>
@@ -89,6 +90,10 @@
             <li>
                 Employees should still record their breaks by checking out and in; the
                 rule is only a safety net.
+            </li>
+            <li>
+                The screenshots still show the version for Odoo 19; the screens of Odoo 20
+                look a little different.
             </li>
             <li>
                 Only the total of the breaks of a day is checked, not the six hours of work

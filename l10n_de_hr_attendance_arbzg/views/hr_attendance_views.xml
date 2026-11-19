@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="UTF-8" ?>
 <!-- Copyright 2026 Baumgärtner Marketing GmbH
      License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl). -->
 <odoo>
@@ -21,7 +21,7 @@
         <field name="model">hr.attendance</field>
         <field name="inherit_id" ref="hr_attendance.hr_attendance_view_form" />
         <field name="arch" type="xml">
-            <xpath expr="//field[@name='check_out']" position="after">
+            <xpath expr="//field[@name='break_duration']" position="after">
                 <field name="arbzg_missing_break" invisible="not arbzg_missing_break" />
             </xpath>
         </field>

@@ -86,7 +86,7 @@ banner(
         "Working Time Act",
         "Legal breaks and the daily maximum for attendances",
         "insert or point out · report · check out at the maximum",
-        "Odoo 19 · Germany (ArbZG) · limits per company",
+        "Odoo 20 · Germany (ArbZG) · limits per company",
     ),
 )
 print("ok")

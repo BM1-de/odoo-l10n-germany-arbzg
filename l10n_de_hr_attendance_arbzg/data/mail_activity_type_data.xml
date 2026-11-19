@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="UTF-8" ?>
 <!-- Copyright 2026 Baumgärtner Marketing GmbH
      License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl). -->
 <odoo noupdate="1">
@@ -7,7 +7,7 @@
         <field name="summary">More than the maximum working time of a day</field>
         <field name="category">default</field>
         <field name="res_model">hr.employee</field>
-        <field name="icon">fa-clock-o</field>
+        <field name="icon">schedule</field>
         <field name="delay_count">0</field>
     </record>
 </odoo>

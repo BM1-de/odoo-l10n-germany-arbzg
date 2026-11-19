@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="UTF-8" ?>
 <!-- Copyright 2026 Baumgärtner Marketing GmbH
      License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl). -->
 <odoo>
@@ -7,7 +7,7 @@
         <field name="model">res.config.settings</field>
         <field name="inherit_id" ref="hr_attendance.res_config_settings_view_form" />
         <field name="arch" type="xml">
-            <xpath expr="//block[@name='overtime_settings']" position="after">
+            <xpath expr="//block[@name='attendance_settings']" position="after">
                 <block title="Working Time Act (Germany)" name="arbzg_settings">
                     <setting
                         string="Working Time Act (ArbZG)"
@@ -29,7 +29,7 @@
                                 widget="float_time"
                                 class="oe_inline"
                             />
-                            <span> hours: </span>
+                            <span>: </span>
                             <field name="arbzg_break_minutes_1" class="oe_inline" />
                             <span> minutes</span>
                         </div>
@@ -40,7 +40,7 @@
                                 widget="float_time"
                                 class="oe_inline"
                             />
-                            <span> hours: </span>
+                            <span>: </span>
                             <field name="arbzg_break_minutes_2" class="oe_inline" />
                             <span> minutes</span>
                         </div>
@@ -65,7 +65,7 @@
                                 widget="float_time"
                                 class="oe_inline"
                             />
-                            <span> hours per day</span>
+                            <span> per day</span>
                         </div>
                         <div class="d-flex align-items-center gap-2">
                             <field name="arbzg_auto_check_out" class="w-auto" />

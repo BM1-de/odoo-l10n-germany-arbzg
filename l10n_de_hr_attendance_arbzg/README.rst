@@ -17,7 +17,7 @@ Germany Working Time Act
     :target: http://www.gnu.org/licenses/agpl-3.0-standalone.html
     :alt: License: AGPL-3
 .. |badge3| image:: https://img.shields.io/badge/github-BM1--de%2Fodoo--l10n--germany--arbzg-lightgray.png?logo=github
-    :target: https://github.com/BM1-de/odoo-l10n-germany-arbzg/tree/19.0/l10n_de_hr_attendance_arbzg
+    :target: https://github.com/BM1-de/odoo-l10n-germany-arbzg/tree/20.0/l10n_de_hr_attendance_arbzg
     :alt: BM1-de/odoo-l10n-germany-arbzg
 
 |badge1| |badge2| |badge3|
@@ -28,9 +28,9 @@ of their employees (BAG, 13 September 2022, 1 ABR 22/21).
 
 - **Breaks (§ 4 ArbZG):** more than 6 hours of work a day need a break
   of 30 minutes, more than 9 hours 45 minutes. Gaps of at least 15
-  minutes between two attendances count as breaks, and so do the breaks
-  of the working schedule that Odoo deducts. Only the time above a limit
-  needs a break: 6:10 hours of work need 10 minutes.
+  minutes between two attendances count as breaks, and so does the break
+  duration recorded on an attendance, which Odoo deducts. Only the time
+  above a limit needs a break: 6:10 hours of work need 10 minutes.
 - **Missing break:** it is put into the middle of the longest attendance
   of the day and noted there, or only pointed out to the employee.
 - **Maximum (§ 3 ArbZG):** more than 10 hours of work a day are reported
@@ -39,10 +39,15 @@ of their employees (BAG, 13 September 2022, 1 ABR 22/21).
   (2) ArbZG).
 - **Forgotten check-out:** open attendances are checked out as soon as
   the maximum of the day is reached.
+- **Time rules of Odoo:** the legal break is inserted before the time
+  rules evaluate the day, so the time above the schedule is counted
+  without the break. Refused attendances and the lines Odoo adds for
+  missing time are no work.
 
-All limits can be set per company, in case the law changes. Contractors,
-freelancers and employees marked as exempt (for example managing
-directors) are not checked.
+All limits can be set per company, in case the law changes. Employees
+marked as exempt (for example managing directors) and employees of an
+employee type marked as exempt (for example contractors and freelancers)
+are not checked.
 
 .. IMPORTANT::
    This is an alpha version, the data model and design can change at any time without warning.
@@ -72,6 +77,17 @@ On the employee, next to the attendance approver: *Exempt from the
 Working Time Act*, for example for managing directors and executives (§
 18 ArbZG).
 
+On the employee type (*Employees → Configuration → Employee Types*):
+*Exempt from the Working Time Act*, for types that are no employees in
+the sense of the act, for example contractors and freelancers. Odoo 20
+has no fixed types for them any more, so no type is exempt until it is
+marked.
+
+When a database is upgraded from Odoo 19, the module marks the employee
+types that the former contractors and freelancers got. If one of them
+got a type that other employees share, that employee is marked as exempt
+instead.
+
 Usage
 =====
 
@@ -82,7 +98,8 @@ created or corrected, the whole day is checked again:
 - A missing break appears as a gap in the middle of the longest
   attendance of the day, with a note on the attendance. Whoever records
   a real break later gets only the rest added; whoever removes an
-  inserted break gets it back.
+  inserted break gets it back. The part after the break keeps the time
+  type and the status of the attendance.
 - With *Only point out the missing break*, the column *Missing Break
   (Minutes)* of the attendance list shows the minutes, and the employee
   gets a message.
@@ -93,6 +110,11 @@ created or corrected, the whole day is checked again:
   reached the maximum of the day (*Automatic Check-Out*); the employee
   corrects the actual time if needed.
 
+With the time rules of Odoo (*Attendances → Configuration → Automatic
+Rules*), an attendance of 8:00 to 18:00 on a schedule of 8 hours becomes
+8:00 to 12:37, 13:22 to 16:45 and 1:15 hours above the schedule from
+16:45 to 18:00: the break first, then the time rule.
+
 Known issues / Roadmap
 ======================
 
@@ -101,9 +123,51 @@ Known issues / Roadmap
 - Not checked: the daily rest period (§ 5), Sundays and public holidays
   (§§ 9–11), night work (§ 6), the weekly working time, young employees
   (JArbSchG) and collective agreements (§ 7).
+- Odoo 20 no longer deducts the lunch break of the working schedule from
+  the worked hours. An attendance from 8:00 to 17:00 is 9 hours of work
+  there, and the break is inserted, where Odoo 19 counted the hour of
+  the schedule.
+- *Break Management on Checkout* of Odoo 20 asks for the break after the
+  check-out. With *Insert the missing break*, the legal break is
+  inserted at the check-out already, and a break entered afterwards is
+  deducted in addition; use *Only point out the missing break* together
+  with it.
+- Odoo does not take back the lines its time rules have split off. If a
+  break is inserted later into a day that already has such lines,
+  because the day was corrected, they stay as they are.
 
 Changelog
 =========
+
+20.0.1.0.0
+----------
+
+- Migration to Odoo 20.
+- The legal break is inserted before the time rules of Odoo evaluate the
+  day, and the check never starts them in between: the time above the
+  schedule is counted with the break, without further lines.
+- Odoo 20 no longer deducts the lunch break of the working schedule; the
+  break duration recorded on an attendance counts as a break instead.
+- Refused attendances, attendances of a time type that counts as absence
+  and the lines of the time rules for missing time are no work. The part
+  split off by a break keeps the time type and the status of the
+  attendance.
+- The selection of employee types of Odoo 19 (contractor, freelancer) is
+  gone: an employee type can be marked as exempt from the Working Time
+  Act. The upgrade from Odoo 19 marks the types of the former
+  contractors and freelancers, or the employee if the type is shared
+  with others.
+- Contains the correction of 19.0.1.0.1.
+
+19.0.1.0.1
+----------
+
+- A technical entry of the absence management whose end is corrected
+  becomes a manual entry on both sides again. Since 18.11.2026 Odoo 19
+  sets only the check-out to manual in that case; the technical check-in
+  made the gap before the entry count as a break, even if it was shorter
+  than the shortest break. The part split off by an inserted break keeps
+  its technical check-in.
 
 19.0.1.0.0
 ----------
@@ -117,7 +181,7 @@ Bug Tracker
 Bugs are tracked on `GitHub Issues <https://github.com/BM1-de/odoo-l10n-germany-arbzg/issues>`_.
 In case of trouble, please check there if your issue has already been reported.
 If you spotted it first, help us to smash it by providing a detailed and welcomed
-`feedback <https://github.com/BM1-de/odoo-l10n-germany-arbzg/issues/new?body=module:%20l10n_de_hr_attendance_arbzg%0Aversion:%2019.0%0A%0A**Steps%20to%20reproduce**%0A-%20...%0A%0A**Current%20behavior**%0A%0A**Expected%20behavior**>`_.
+`feedback <https://github.com/BM1-de/odoo-l10n-germany-arbzg/issues/new?body=module:%20l10n_de_hr_attendance_arbzg%0Aversion:%2020.0%0A%0A**Steps%20to%20reproduce**%0A-%20...%0A%0A**Current%20behavior**%0A%0A**Expected%20behavior**>`_.
 
 Do not contact contributors directly about support or help with technical issues.
 
@@ -145,6 +209,6 @@ Current maintainer:
 
 |maintainer-bm1-phillip| 
 
-This module is part of the `BM1-de/odoo-l10n-germany-arbzg <https://github.com/BM1-de/odoo-l10n-germany-arbzg/tree/19.0/l10n_de_hr_attendance_arbzg>`_ project on GitHub.
+This module is part of the `BM1-de/odoo-l10n-germany-arbzg <https://github.com/BM1-de/odoo-l10n-germany-arbzg/tree/20.0/l10n_de_hr_attendance_arbzg>`_ project on GitHub.
 
 You are welcome to contribute.

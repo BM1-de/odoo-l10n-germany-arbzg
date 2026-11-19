@@ -4,10 +4,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Odoo Server 19.0-20261015\n"
+"Project-Id-Version: Odoo Server 20.0-20261110\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-10-23 05:58+0000\n"
-"PO-Revision-Date: 2026-10-23 05:58+0000\n"
+"POT-Creation-Date: 2026-11-19 17:25+0000\n"
+"PO-Revision-Date: 2026-11-19 17:25+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -26,18 +26,18 @@ msgstr "%(employee)s hat laut Anwesenheit %(hours)s Std. gearbeitet, erlaubt sin
 
 #. module: l10n_de_hr_attendance_arbzg
 #: model_terms:ir.ui.view,arch_db:l10n_de_hr_attendance_arbzg.res_config_settings_view_form
-msgid "<span> hours per day</span>"
-msgstr "<span> Std. pro Tag</span>"
-
-#. module: l10n_de_hr_attendance_arbzg
-#: model_terms:ir.ui.view,arch_db:l10n_de_hr_attendance_arbzg.res_config_settings_view_form
-msgid "<span> hours: </span>"
-msgstr "<span> Std.: </span>"
-
-#. module: l10n_de_hr_attendance_arbzg
-#: model_terms:ir.ui.view,arch_db:l10n_de_hr_attendance_arbzg.res_config_settings_view_form
 msgid "<span> minutes</span>"
 msgstr "<span> Min.</span>"
+
+#. module: l10n_de_hr_attendance_arbzg
+#: model_terms:ir.ui.view,arch_db:l10n_de_hr_attendance_arbzg.res_config_settings_view_form
+msgid "<span> per day</span>"
+msgstr "<span> pro Tag</span>"
+
+#. module: l10n_de_hr_attendance_arbzg
+#: model_terms:ir.ui.view,arch_db:l10n_de_hr_attendance_arbzg.res_config_settings_view_form
+msgid "<span>: </span>"
+msgstr "<span>: </span>"
 
 #. module: l10n_de_hr_attendance_arbzg
 #: model_terms:ir.ui.view,arch_db:l10n_de_hr_attendance_arbzg.res_config_settings_view_form
@@ -122,7 +122,7 @@ msgstr "Automatisch ausgestempelt: Die Höchstarbeitszeit des Tages (%(maximum)s
 
 #. module: l10n_de_hr_attendance_arbzg
 #: model:ir.model,name:l10n_de_hr_attendance_arbzg.model_res_company
-msgid "Companies"
+msgid "Company"
 msgstr "Unternehmen"
 
 #. module: l10n_de_hr_attendance_arbzg
@@ -133,6 +133,7 @@ msgstr "Konfigurationseinstellungen"
 #. module: l10n_de_hr_attendance_arbzg
 #: model:ir.model.fields,field_description:l10n_de_hr_attendance_arbzg.field_hr_attendance__display_name
 #: model:ir.model.fields,field_description:l10n_de_hr_attendance_arbzg.field_hr_employee__display_name
+#: model:ir.model.fields,field_description:l10n_de_hr_attendance_arbzg.field_hr_employee_type__display_name
 #: model:ir.model.fields,field_description:l10n_de_hr_attendance_arbzg.field_res_company__display_name
 #: model:ir.model.fields,field_description:l10n_de_hr_attendance_arbzg.field_res_config_settings__display_name
 msgid "Display Name"
@@ -144,7 +145,21 @@ msgid "Employee"
 msgstr "Mitarbeiter"
 
 #. module: l10n_de_hr_attendance_arbzg
+#: model:ir.model,name:l10n_de_hr_attendance_arbzg.model_hr_employee_type
+msgid "Employee Type"
+msgstr "Mitarbeitertyp"
+
+#. module: l10n_de_hr_attendance_arbzg
+#: model:ir.model.fields,help:l10n_de_hr_attendance_arbzg.field_hr_employee_type__arbzg_exempt
+msgid ""
+"Employees of this type are no employees in the sense of the Working Time "
+"Act, for example contractors and freelancers: their attendances are not "
+"checked."
+msgstr "Mitarbeiter dieses Typs sind keine Arbeitnehmer im Sinne des Arbeitszeitgesetzes, zum Beispiel Auftragnehmer und Freiberufler: Ihre Anwesenheiten werden nicht geprüft."
+
+#. module: l10n_de_hr_attendance_arbzg
 #: model:ir.model.fields,field_description:l10n_de_hr_attendance_arbzg.field_hr_employee__arbzg_exempt
+#: model:ir.model.fields,field_description:l10n_de_hr_attendance_arbzg.field_hr_employee_type__arbzg_exempt
 msgid "Exempt from the Working Time Act"
 msgstr "Nicht unter dem Arbeitszeitgesetz"
 
@@ -163,9 +178,9 @@ msgstr "Erste Pause nach (Stunden)"
 #. module: l10n_de_hr_attendance_arbzg
 #: model:ir.model.fields,help:l10n_de_hr_attendance_arbzg.field_hr_employee__arbzg_exempt
 msgid ""
-"For example managing directors and executives (§ 18 ArbZG). Contractors and "
-"freelancers are always exempt."
-msgstr "Zum Beispiel Geschäftsführer und leitende Angestellte (§ 18 ArbZG). Auftragnehmer und Freiberufler sind immer ausgenommen."
+"For example managing directors and executives (§ 18 ArbZG). Employees of an "
+"employee type that is exempt, such as freelancers, are never checked."
+msgstr "Zum Beispiel Geschäftsführer und leitende Angestellte (§ 18 ArbZG). Mitarbeiter eines ausgenommenen Mitarbeitertyps, etwa Freiberufler, werden nie geprüft."
 
 #. module: l10n_de_hr_attendance_arbzg
 #: model:ir.model.fields,help:l10n_de_hr_attendance_arbzg.field_res_company__arbzg_min_break_minutes
@@ -174,6 +189,11 @@ msgid ""
 "Gaps between two attendances count as a break from this length on (breaks "
 "may be split into parts of at least 15 minutes, § 4 ArbZG)."
 msgstr "Lücken zwischen zwei Anwesenheiten zählen ab dieser Länge als Pause (Pausen dürfen in Abschnitte von mindestens 15 Minuten geteilt werden, § 4 ArbZG)."
+
+#. module: l10n_de_hr_attendance_arbzg
+#: model:ir.module.module,shortdesc:base.module_l10n_de_hr_attendance_arbzg
+msgid "Germany Working Time Act"
+msgstr "Arbeitszeitgesetz (Deutschland)"
 
 #. module: l10n_de_hr_attendance_arbzg
 #: model:ir.model.fields,help:l10n_de_hr_attendance_arbzg.field_res_company__arbzg_responsible_id
@@ -186,6 +206,7 @@ msgstr "Bekommt eine Aufgabe, wenn jemand länger als die Höchstarbeitszeit gea
 #. module: l10n_de_hr_attendance_arbzg
 #: model:ir.model.fields,field_description:l10n_de_hr_attendance_arbzg.field_hr_attendance__id
 #: model:ir.model.fields,field_description:l10n_de_hr_attendance_arbzg.field_hr_employee__id
+#: model:ir.model.fields,field_description:l10n_de_hr_attendance_arbzg.field_hr_employee_type__id
 #: model:ir.model.fields,field_description:l10n_de_hr_attendance_arbzg.field_res_company__id
 #: model:ir.model.fields,field_description:l10n_de_hr_attendance_arbzg.field_res_config_settings__id
 msgid "ID"
@@ -213,6 +234,13 @@ msgid ""
 "Legal break: %(minutes)s minutes inserted automatically (%(start)s–%(end)s),"
 " because no sufficient break was recorded on this day."
 msgstr "Gesetzliche Pause: %(minutes)s Min. automatisch eingefügt (%(start)s–%(end)s Uhr), weil an diesem Tag keine ausreichende Pause erfasst war."
+
+#. module: l10n_de_hr_attendance_arbzg
+#: model:ir.module.module,summary:base.module_l10n_de_hr_attendance_arbzg
+msgid ""
+"Legal breaks and the daily maximum of the German Working Time Act (ArbZG) "
+"for attendances"
+msgstr "Gesetzliche Pausen und tägliche Höchstarbeitszeit nach dem Arbeitszeitgesetz (ArbZG) für die Anwesenheiten"
 
 #. module: l10n_de_hr_attendance_arbzg
 #: model:ir.model.fields,field_description:l10n_de_hr_attendance_arbzg.field_res_company__arbzg_break_minutes_2
