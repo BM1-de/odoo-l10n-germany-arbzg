@@ -65,7 +65,20 @@ class HrAttendance(models.Model):
         return attendances
 
     def write(self, vals):
+        # Odoo sets out_mode from technical to manual itself when check_out is
+        # written, in_mode only when check_in is written (since 18.11.2026):
+        # remember the technical entries before, see _arbzg_fix_technical
+        technical = self.browse()
+        if {"check_in", "check_out"} & set(vals):
+            technical = self.filtered(
+                lambda attendance: attendance.in_mode == "technical"
+                and attendance.out_mode == "technical"
+            )
         result = super().write(vals)
+        technical.filtered(
+            lambda attendance: attendance.check_out
+            and attendance.employee_id._arbzg_applies()
+        )._arbzg_fix_technical(entirely=True)
         if {"check_in", "check_out", "employee_id"} & set(vals):
             self._arbzg_check()
         return result
@@ -113,21 +126,28 @@ class HrAttendance(models.Model):
             minutes = 0
         attendances._arbzg_set_missing_break(minutes)
 
-    def _arbzg_fix_technical(self):
+    def _arbzg_fix_technical(self, entirely=False):
         """Odoo's absence management creates technical entries of one second.
 
         Once someone corrects such an entry to real times, it is a normal entry;
-        otherwise it would stay red and count as technical.
+        otherwise it would stay red and count as technical. The part split off
+        by an inserted break has only ``in_mode`` technical and keeps it.
+
+        ``entirely``: these attendances were technical on both sides before
+        their times were changed. Odoo then sets ``out_mode`` to manual itself
+        already, but leaves ``in_mode`` technical if only ``check_out`` changed.
         """
         for attendance in self:
-            if (
-                attendance.out_mode == "technical"
-                and _hours(attendance.check_out - attendance.check_in) > 1 / 60.0
-            ):
-                vals = {"out_mode": "manual"}
-                if attendance.in_mode == "technical":
-                    vals["in_mode"] = "manual"
-                attendance.write(vals)
+            if (entirely or attendance.out_mode == "technical") and _hours(
+                attendance.check_out - attendance.check_in
+            ) > 1 / 60.0:
+                attendance.write(
+                    {
+                        field: "manual"
+                        for field in ("in_mode", "out_mode")
+                        if attendance[field] == "technical"
+                    }
+                )
 
     def _arbzg_work_and_breaks(self):
         """Hours of work and of breaks of these attendances (sorted, one day).

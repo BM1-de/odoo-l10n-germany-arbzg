@@ -208,6 +208,20 @@ class TestArbzg(TransactionCase):
         other.write({"check_out": at(14)})
         self.assertEqual((other.in_mode, other.out_mode), ("systray", "manual"))
 
+    def test_split_part_keeps_its_technical_start(self):
+        self.attend(at(8), at(14, 10))
+        first, second = self.day()
+        self.assertEqual(second.in_mode, "technical")
+        # only the end of the part after the inserted break is corrected: its
+        # start stays technical, so the 10 minutes before it still count as
+        # break, and 6:25 hours of work need 20 more minutes, not 25
+        second.write({"check_out": at(14, 35)})
+        self.assertEqual(
+            self.times(),
+            [("08:00", "11:00"), ("11:10", "12:42"), ("13:02", "14:35")],
+        )
+        self.assertEqual((second.in_mode, second.out_mode), ("technical", "manual"))
+
     # ------------------------------------------------------------------
     # who is checked
     # ------------------------------------------------------------------

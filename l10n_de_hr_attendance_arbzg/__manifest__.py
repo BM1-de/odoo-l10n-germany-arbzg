@@ -4,7 +4,7 @@
     "name": "Germany Working Time Act",
     "summary": "Legal breaks and the daily maximum of the German Working Time Act "
     "(ArbZG) for attendances",
-    "version": "19.0.1.0.0",
+    "version": "19.0.1.0.1",
     "category": "Human Resources/Attendances",
     "website": "https://github.com/BM1-de/odoo-l10n-germany-arbzg",
     "author": "Baumgärtner Marketing GmbH",
