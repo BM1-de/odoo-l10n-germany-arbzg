@@ -31,6 +31,10 @@ class TestTimeAccount(TransactionCase):
         )
         # the time rules of Odoo cut attendances into pieces; one test turns them on
         cls.env["hr.time.rule"].search([]).active = False
+        # the module of the Working Time Act (same repository) would insert
+        # legal breaks into the attendances of these tests
+        if "arbzg_enabled" in cls.company._fields:
+            cls.company.arbzg_enabled = False
         cls.Line = cls.env["l10n_de.time.account.line"]
         cls.calendar = cls._calendar("40 hours", range(5), [(8, 12), (13, 17)])
         cls.user = new_test_user(

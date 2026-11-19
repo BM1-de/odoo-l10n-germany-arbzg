@@ -44,7 +44,7 @@ set -euo pipefail
 REPO="$(cd "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd)"
 STAMP="$(date +%Y%m%d-%H%M%S)"
 DB="protocol_${STAMP//-/_}"
-MODULES="l10n_de_hr_attendance_arbzg"
+MODULES="l10n_de_hr_attendance_arbzg,l10n_de_hr_attendance_time_account"
 OUT=""
 KEEP=0
 COVERAGE_VERSION="7.16.2"
