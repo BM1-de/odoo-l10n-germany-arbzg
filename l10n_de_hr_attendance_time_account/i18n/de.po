@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 20.0-20261110\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-12 09:00+0000\n"
-"PO-Revision-Date: 2026-11-12 09:00+0000\n"
+"POT-Creation-Date: 2026-11-19 17:25+0000\n"
+"PO-Revision-Date: 2026-11-19 17:25+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -585,6 +585,11 @@ msgid "Forfeiture"
 msgstr "Verfall"
 
 #. module: l10n_de_hr_attendance_time_account
+#: model:ir.module.module,shortdesc:base.module_l10n_de_hr_attendance_time_account
+msgid "Germany Working Time Account"
+msgstr "Arbeitszeitkonto (Deutschland)"
+
+#. module: l10n_de_hr_attendance_time_account
 #: model_terms:ir.ui.view,arch_db:l10n_de_hr_attendance_time_account.report_statement
 msgid ""
 "Hours and minutes. Expected hours follow the working\n"
@@ -842,6 +847,13 @@ msgid ""
 "Set period and tolerances of the contract versions from the overtime ruleset"
 " they had in Odoo 19, where no working time account is set yet."
 msgstr "Zeitraum und Toleranzen der Vertragsversionen aus dem Überstunden-Regelwerk setzen, das sie in Odoo 19 hatten, soweit noch kein Arbeitszeitkonto eingestellt ist."
+
+#. module: l10n_de_hr_attendance_time_account
+#: model:ir.module.module,summary:base.module_l10n_de_hr_attendance_time_account
+msgid ""
+"Signed working time account (plus and minus hours) from attendances, with "
+"statements for German payroll records"
+msgstr "Arbeitszeitkonto mit Vorzeichen (Mehr- und Minusstunden) aus den Anwesenheiten, mit Auszügen für die deutschen Lohnunterlagen"
 
 #. module: l10n_de_hr_attendance_time_account
 #: model:ir.model.fields,field_description:l10n_de_hr_attendance_time_account.field_l10n_de_time_account_line__state
