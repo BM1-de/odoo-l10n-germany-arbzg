@@ -32,6 +32,20 @@ each version.
 The development status is _Alpha_ until the module has been used in production for one
 full year, _Beta_ after that.
 
+## 20.0.1.0.0 (Alpha) – protocol
+
+Checks before the tag on 19.11.2026. First version for Odoo 20 of both modules, tested
+together in one database (as in the CI).
+
+| Item                                  | Result                                                                                                                                                                                                                                                                                                                          |
+| ------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Tests in a fresh database             | passed on the working tree of 19.11.2026 with the image `odoo20mig/odoo:20.0-20261110`: 78 tests (51 of `l10n_de_hr_attendance_arbzg`, 27 of `l10n_de_hr_attendance_time_account`), 0 failures, 0 errors, 0 skipped; the 2 JavaScript suites of `web` that run with them passed as well. Repeated on the tagged commit (step 4) |
+| Coverage lines / branches             | 99.78 % of lines and 98.15 % of branches (`l10n_de_hr_attendance_arbzg` 100 % / 100 %, `l10n_de_hr_attendance_time_account` 99.71 % / 97.66 %)                                                                                                                                                                                  |
+| pre-commit, translations              | `pre-commit run --all-files` clean on 19.11.2026; every `i18n/de.po` complete                                                                                                                                                                                                                                                   |
+| No real data                          | only invented persons and businesses (checked on 19.11.2026)                                                                                                                                                                                                                                                                    |
+| Upgrade from Odoo 19                  | the migration script of `l10n_de_hr_attendance_arbzg` (exempt employee types) is covered by tests on a simulated column of OpenUpgrade; no upgrade of a real database with this version yet                                                                                                                                     |
+| Test protocol attached to the release | by the workflow `release` on the tag (GitHub release of 20.0.1.0.0)                                                                                                                                                                                                                                                             |
+
 ## 19.0.1.0.0 (Alpha) – protocol
 
 Checks before the tag on 23.10.2026.
