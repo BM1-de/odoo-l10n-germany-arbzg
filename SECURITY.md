@@ -2,11 +2,12 @@
 
 ## Supported versions
 
-Security fixes are made on the branch `19.0` and released as a new version `19.0.x.y.z`
+Security fixes are made on the branch `20.0` and released as a new version `20.0.x.y.z`
 of the affected modules. Older versions are not maintained.
 
 | Branch | Supported |
 | ------ | --------- |
+| 20.0   | yes       |
 | 19.0   | yes       |
 
 ## Reporting a vulnerability
